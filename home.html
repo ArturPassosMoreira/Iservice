@@ -7,6 +7,8 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_T6c93ie74QmEdsP3871ccF_vR9FegiI&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
     <style>
        
         .container{
@@ -33,6 +35,7 @@
             height: 400px;
             margin-top: 20px;
         }
+     
     </style>
 </head>
 <body class="red accent-2">
@@ -62,8 +65,12 @@
   
     <div class="container white center-align">
         <h3>Mapa de GPS em Tempo Real</h3>
-        <div class="map-container" id="map"></div>
+        <div class="map-container" id="map"> <gmp-map center="-19.970104217529297,-44.20414352416992" zoom="14" map-id="DEMO_MAP_ID">
+            <gmp-advanced-marker position="-19.970104217529297,-44.20414352416992" title="My location"></gmp-advanced-marker>
+          </gmp-map></div>
+        
     </div>
+   
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
@@ -72,7 +79,8 @@
     <script>document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.sidenav');
         var instances = M.Sidenav.init(elems);
-         // Função para iniciar o mapa
+        
+         
         function initMap() {
                 // Criar mapa usando a API de Geolocalização do navegador
                 if ("geolocation" in navigator) {
@@ -118,7 +126,7 @@
             initMap();
         });
         
-    
+      
     </script>
 </body>
 </html>
