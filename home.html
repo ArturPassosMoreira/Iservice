@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+       
+        .container{
+            padding: 10px;
+            margin-top: 10px;
+        }
+        nav {
+            background-color: red;
+        }
+        nav ul a {
+            color: white;
+        }
+        .sidenav-trigger {
+            display: block;
+        }
+        .brand-logo img {
+            
+            height: 40px;
+            width: auto;
+            margin-top: 10px;
+            margin-bottom: 10px; 
+        }
+        .map-container {
+            height: 400px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="red accent-2">
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="imagens/logo.png" class="brand-logo"><img  
+            src="imagens/logo.png" alt="Logo"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul id="slide-out" class="sidenav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Serviços</a></li>
+        <li><a href="#">Contato</a></li>
+    </ul>
+
+    <!-- Cabeçalho -->
+    
+  
+    <div class="container white center-align">
+        <h3>Mapa de GPS em Tempo Real</h3>
+        <div class="map-container" id="map"></div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+    </script>
+   
+    <script>document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+         // Função para iniciar o mapa
+        function initMap() {
+                // Criar mapa usando a API de Geolocalização do navegador
+                if ("geolocation" in navigator) {
+                    var mapOptions = {
+                        zoom: 15,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+
+                    // Criar o objeto do mapa
+                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+                    // Atualizar a posição do usuário em tempo real
+                    var updateLocation = function() {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            var latitude = position.coords.latitude;
+                            var longitude = position.coords.longitude;
+
+                            // Atualizar o centro do mapa com a nova posição
+                            var userLatLng = new google.maps.LatLng(latitude, longitude);
+                            map.setCenter(userLatLng);
+
+                            // Adicionar marcador na nova posição
+                            var marker = new google.maps.Marker({
+                                position: userLatLng,
+                                map: map,
+                                title: 'Sua localização'
+                            });
+                        });
+                    };
+
+                    // Atualizar a posição a cada 5 segundos
+                    setInterval(updateLocation, 5000);
+
+                    // Iniciar a atualização inicial da posição
+                    updateLocation();
+                } else {
+                    // Navegador não suporta a API de Geolocalização
+                    console.error("Seu navegador não suporta a API de Geolocalização.");
+                }
+            }
+
+            // Chamar a função de inicialização do mapa após o carregamento do DOM
+            initMap();
+        });
+        
+    
+    </script>
+</body>
+</html>
