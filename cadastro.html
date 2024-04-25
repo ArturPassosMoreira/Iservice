@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .header {
+          background-color: red;
+          padding: 10px 0;
+        }
+        .header img {
+         padding-bottom: 10px;
+          height: 70px;
+          width: 70px;
+          margin-left: 20px;
+        }
+        .container{
+            padding: 10px;
+            margin-top: 10px;
+        }
+      </style>
+</head>
+<body class="red accent-2">
+      <!-- Cabeçalho -->
+  <header class="header valign-wrapper center-align">
+    <div class="container">
+      <img src="imagens/logo.png" alt="Logo">
+    </div>
+  </header>
+    <div class="container white center-align">
+        <h3>Cadastrar</h3>
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="nome" type="text" class="validate">
+              <label for="nome">Nome</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">E-mail</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="senha" type="password" class="validate">
+              <label for="senha">Senha</label>
+            </div>
+          </div>
+          <div class="row valign-wrapper right-align">
+            <div class="col s12">
+              <a href="login.html" target="_self" class="btn waves-effect waves-light blue" type="submit" name="action">Cadastrar
+                <i class="material-icons right">send</i>
+                  
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
