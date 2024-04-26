@@ -7,11 +7,9 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_T6c93ie74QmEdsP3871ccF_vR9FegiI&callback=console.debug&libraries=maps,marker&v=beta">
-    </script>
+  
     <style>
-       
-        .container{
+        .container {
             padding: 10px;
             margin-top: 10px;
         }
@@ -25,7 +23,6 @@
             display: block;
         }
         .brand-logo img {
-            
             height: 40px;
             width: auto;
             margin-top: 10px;
@@ -35,7 +32,6 @@
             height: 400px;
             margin-top: 20px;
         }
-     
     </style>
 </head>
 <body class="red accent-2">
@@ -43,9 +39,8 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <a href="imagens/logo.png" class="brand-logo"><img  
-            src="imagens/logo.png" alt="Logo"></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5  red darken-4">
+            <a href="imagens/logo.png" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Sobre</a></li>
                 <li><a href="#">Serviços</a></li>
@@ -61,65 +56,71 @@
     </ul>
 
     <!-- Cabeçalho -->
-    
-  
     <div class="container white center-align">
         <h3>Mapa de GPS em Tempo Real</h3>
-        <div class="map-container" id="map"> <gmp-map center="-19.970104217529297,-44.20414352416992" zoom="14" map-id="DEMO_MAP_ID">
-            </div>
-        
+        <div class="map-container" id="map"></div>
     </div>
     <div class="col s12 center-align">
-        <a href="chamado.html" target="_self" class=" lime accent-2 black-text btn waves-effect waves-light blue" type="submit" name="action">Chamado
-          
-        </a>
-      </div>
-   
+        <a href="chamado.html" target="_self" class=" lime accent-2 black-text btn waves-effect waves-light blue" type="submit" name="action">Chamado</a>
+    </div>
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
    
-    <script>document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(elems);
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
         
-         
-        function initMap() {
+            var map;
+            var marker; // Variável global para armazenar o marcador
+
+            function initMap() {
                 // Criar mapa usando a API de Geolocalização do navegador
                 if ("geolocation" in navigator) {
-                    var mapOptions = {
-                        zoom: 15,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude;
 
-                    // Criar o objeto do mapa
-                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                        var mapOptions = {
+                            zoom: 15,
+                            center: { lat: latitude, lng: longitude },
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
 
-                    // Atualizar a posição do usuário em tempo real
-                    var updateLocation = function() {
-                        navigator.geolocation.getCurrentPosition(function(position) {
-                            var latitude = position.coords.latitude;
-                            var longitude = position.coords.longitude;
+                        // Criar o objeto do mapa
+                        map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-                            // Atualizar o centro do mapa com a nova posição
-                            var userLatLng = new google.maps.LatLng(latitude, longitude);
-                            map.setCenter(userLatLng);
+                        // Atualizar a posição do usuário em tempo real
+                        var updateLocation = function() {
+                            navigator.geolocation.getCurrentPosition(function(position) {
+                                var latitude = position.coords.latitude;
+                                var longitude = position.coords.longitude;
 
-                            // Adicionar marcador na nova posição
-                            var marker = new google.maps.Marker({
-                                position: userLatLng,
-                                map: map,
-                                title: 'Sua localização'
+                                // Atualizar o centro do mapa com a nova posição
+                                var userLatLng = new google.maps.LatLng(latitude, longitude);
+                                map.setCenter(userLatLng);
+
+                                // Remover o marcador anterior (se existir)
+                                if (marker) {
+                                    marker.setMap(null);
+                                }
+
+                                // Adicionar novo marcador na nova posição
+                                marker = new google.maps.Marker({
+                                    position: userLatLng,
+                                    map: map,
+                                    title: 'Sua localização'
+                                });
                             });
-                        });
-                    };
+                        };
 
-                    // Atualizar a posição a cada 5 segundos
-                    setInterval(updateLocation, 5000);
+                        // Atualizar a posição a cada 5 segundos
+                        setInterval(updateLocation, 5000);
 
-                    // Iniciar a atualização inicial da posição
-                    updateLocation();
+                        // Iniciar a atualização inicial da posição
+                        updateLocation();
+                    });
                 } else {
                     // Navegador não suporta a API de Geolocalização
                     console.error("Seu navegador não suporta a API de Geolocalização.");
@@ -129,8 +130,8 @@
             // Chamar a função de inicialização do mapa após o carregamento do DOM
             initMap();
         });
-        
-      
     </script>
+    
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV2KukchL5pqIAnCoFtDXcRfZak6UGnKM&callback=initMap&libraries=maps,marker&v=beta"></script>
 </body>
 </html>
