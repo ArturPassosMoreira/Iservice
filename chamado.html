@@ -3,66 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Página Principal</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
     <style>
-        .header {
-          background-color: red;
-          padding: 10px 0;
-        }
-        .header img {
-         padding-bottom: 10px;
-          height: 70px;
-          width: 70px;
-          margin-left: 20px;
-        }
-        .container{
+        .container {
             padding: 10px;
             margin-top: 10px;
         }
-      </style>
+        nav {
+            background-color: red;
+        }
+        nav ul a {
+            color: white;
+        }
+        .sidenav-trigger {
+            display: block;
+        }
+        .brand-logo img {
+            height: 40px;
+            width: auto;
+            margin-top: 10px;
+            margin-bottom: 10px; 
+        }
+        .map-container {
+            height: 400px;
+            margin-top: 20px;
+        }
+         .chamado>a{
+           width: 20vh;
+            margin: 15px;
+            border-radius: 9px;
+            box-shadow: 2px 2px 2px black;
+        }
+       
+        
+    </style>
 </head>
 <body class="red accent-2">
-      <!-- Cabeçalho -->
-  <header class="header valign-wrapper center-align">
-    <div class="container">
-      <img src="imagens/logo.png" alt="Logo">
-    </div>
-  </header>
-    <div class="container white center-align">
-        <h3>Register</h3>
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="nome" type="text" class="validate">
-              <label for="nome">name</label>
-            </div>
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">e-mail</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="senha" type="password" class="validate">
-              <label for="senha">password</label>
-            </div>
-          </div>
-          <div class="row valign-wrapper right-align">
-            <div class="col s12">
-              <a href="login.html" target="_self" class="btn waves-effect waves-light blue" type="submit" name="action">register
-                <i class="material-icons right">send</i>
-                  
-              </a>
-            </div>
-          </div>
-        </form>
-      </div>
-    
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="imagens/logo.png" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul id="slide-out" class="sidenav">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Serviços</a></li>
+        <li><a href="#">Contato</a></li>
+    </ul>
 
-     <!-- Compiled and minified JavaScript -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Cabeçalho -->
+    <div class="container white center-align">
+        <h1>Criar Chamado</h1>
+        <h3>Descrição</h3>
+        <div class="input-field">
+          <select id="tipoProblema">
+              <option value="" disabled selected>Selecione o tipo do problema</option>
+              <option value="1">Pavimentação</option>
+              <option value="2">Rede Hidráulica</option>
+              <option value="3">Rede Elétrica</option>
+              <option value="4">Fenômeno da Natureza</option>
+              
+          </select>
+          <label for="tipoProblema">Tipo do Problema</label>
+      </div>
+      <div class="input-field">
+        <textarea id="descricaoProblema" class="materialize-textarea"></textarea>
+        <label for="descricaoProblema">Descrição do Problema</label>
+    </div>
+      <div class="file-field input-field">
+        <div class="btn grey">
+          <i class="material-icons"><span class="material-symbols-outlined">
+            add_photo_alternate
+            </i>
+
+            <input type="file" multiple>
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Adicionar Imagem">
+        </div>
+    </div>
+
+        <h3>Mapa de GPS em Tempo Real</h3>
+        <div class="map-container" id="map"></div>
+    </div>
+    <div class="chamado col s12 center-align ">
+        <a href="home.html" target="_self" class=" green black-text btn" type="submit" name="action">CONCLUIR</a>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+            var elem = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elem);
+        
+        
+            var map;
+            var marker; // Variável global para armazenar o marcador
+
+            function initMap() {
+                // Criar mapa usando a API de Geolocalização do navegador
+                if ("geolocation" in navigator) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude;
+
+                        var mapOptions = {
+                            zoom: 15,
+                            center: { lat: latitude, lng: longitude },
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+
+                        // Criar o objeto do mapa
+                        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+                        // Atualizar a posição do usuário em tempo real
+                        var updateLocation = function() {
+                            navigator.geolocation.getCurrentPosition(function(position) {
+                                var latitude = position.coords.latitude;
+                                var longitude = position.coords.longitude;
+
+                                // Atualizar o centro do mapa com a nova posição
+                                var userLatLng = new google.maps.LatLng(latitude, longitude);
+                                map.setCenter(userLatLng);
+
+                                // Remover o marcador anterior (se existir)
+                                if (marker) {
+                                    marker.setMap(null);
+                                }
+
+                                // Adicionar novo marcador na nova posição
+                                marker = new google.maps.Marker({
+                                    position: userLatLng,
+                                    map: map,
+                                    title: 'Sua localização'
+                                });
+                            });
+                        };
+
+                        // Atualizar a posição a cada 5 segundos
+                        setInterval(updateLocation, 5000);
+
+                        // Iniciar a atualização inicial da posição
+                        updateLocation();
+                    });
+                } else {
+                    // Navegador não suporta a API de Geolocalização
+                    console.error("Seu navegador não suporta a API de Geolocalização.");
+                }
+            }
+
+            // Chamar a função de inicialização do mapa após o carregamento do DOM
+            initMap();
+        });
+    </script>
+    
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV2KukchL5pqIAnCoFtDXcRfZak6UGnKM&callback=initMap&libraries=maps,marker&v=beta"></script>
 </body>
 </html>
