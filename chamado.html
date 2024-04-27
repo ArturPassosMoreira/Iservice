@@ -99,19 +99,13 @@
         <div class="map-container" id="map"></div>
     </div>
     <div class="chamado col s12 center-align ">
-        <a href="home.html" target="_self" class=" green black-text btn" type="submit" name="action">CONCLUIR</a>
-    </div>
+      <a href="#" id="concluirChamadoBtn" class="green black-text btn">CONCLUIR</a>
+  </div>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
    
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);
-            var elem = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elem);
-        
         
             var map;
             var marker; // Variável global para armazenar o marcador
@@ -163,14 +157,39 @@
                         updateLocation();
                     });
                 } else {
-                    // Navegador não suporta a API de Geolocalização
+                
                     console.error("Seu navegador não suporta a API de Geolocalização.");
                 }
             }
 
-            // Chamar a função de inicialização do mapa após o carregamento do DOM
             initMap();
+            document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+            var elem = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elem);
+            
+            var concluirChamadoBtn = document.getElementById('concluirChamadoBtn');
+
+// Adicionar um ouvinte de eventos ao botão "CONCLUIR"
+concluirChamadoBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    var descricaoProblema = document.getElementById("descricaoProblema").value.trim();
+    
+    // Verificar se a descrição do problema está em branco
+    if (descricaoProblema === "") {
+        alert("Por favor, preencha a descrição do problema.");
+    } else {
+        alert("Chamado concluído! Obrigado por Interagir! Você será redirecionado para pagina principal em 2 segundos após apertar o OK.");
+        setTimeout(function() {
+            window.location.href = "home.html";
+        }, 2000);
+    }
+});
+        
         });
+        
     </script>
     
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV2KukchL5pqIAnCoFtDXcRfZak6UGnKM&callback=initMap&libraries=maps,marker&v=beta"></script>
