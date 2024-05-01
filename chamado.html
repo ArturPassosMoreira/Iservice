@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>Chamado</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -49,17 +49,17 @@
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <a href="imagens/logo.png" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
-                <li><a href="home.html">Home</a></li>
+                <li><a href="home.html">Pagina Principal</a></li>
                 <li><a href="#">Sobre</a></li>
-                <li><a href="#">Serviços</a></li>
+                <li><a href="historico.html">Historico de Chamados</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </div>
     </nav>
     <ul id="slide-out" class="sidenav">
-        <li><a href="home.html">Home</a></li>
+        <li><a href="home.html">Pagina Principal</a></li>
         <li><a href="#">Sobre</a></li>
-        <li><a href="#">Serviços</a></li>
+        <li><a href="historico.html">Historico de Chamados</a></li>
         <li><a href="#">Contato</a></li>
     </ul>
 
@@ -169,20 +169,22 @@
             
             var concluirChamadoBtn = document.getElementById('concluirChamadoBtn');
 
-// Adicionar um ouvinte de eventos ao botão "CONCLUIR"
+
 concluirChamadoBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
     var descricaoProblema = document.getElementById("descricaoProblema").value.trim();
-    
-    // Verificar se a descrição do problema está em branco
+    var tipoProblema = document.getElementById("tipoProblema").value;
+   
     if (descricaoProblema === "") {
         alert("Por favor, preencha a descrição do problema.");
     } else {
-        alert("Chamado concluído! Obrigado por Interagir! Você será redirecionado para pagina principal em 2 segundos após apertar o OK.");
-        setTimeout(function() {
+        localStorage.setItem("descricaoProblema", descricaoProblema);
+                    localStorage.setItem("tipoProblema", tipoProblema);
+        alert("Chamado concluído! Obrigado por Interagir! Você pode consultar seu chamado no seu historico de chamados. Você será redirecionado para pagina principal em instantes.");
+        
             window.location.href = "home.html";
-        }, 2000);
+        
     }
 });
         

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Chamados</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+    <style>
+        .container {
+            padding: 10px;
+            margin-top: 10px;
+        }
+        nav {
+            background-color: red;
+        }
+        nav ul a {
+            color: white;
+        }
+        .sidenav-trigger {
+            display: block;
+        }
+        .brand-logo img {
+            height: 40px;
+            width: auto;
+            margin-top: 10px;
+            margin-bottom: 10px; 
+        }
+        .map-container {
+            height: 400px;
+            margin-top: 20px;
+        }
+        .chamado {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .chamado img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="red accent-2">
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="imagens/logo.png" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
+                <li><a href="home.html">Pagina Principal</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="historico.html">Historico de Chamados</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul id="slide-out" class="sidenav">
+        <li><a href="home.html">Pagina Principal</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="historico.html">Historico de Chamados</a></li>
+        <li><a href="#">Contato</a></li>
+    </ul>
+
+    <!-- Cabeçalho -->
+    <div class="container white center-align">
+        <h1>Histórico de Chamados</h1>
+       <div id="historicoChamados"></div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+
+            // Recupera todos os chamados do localStorage
+            var chamados = JSON.parse(localStorage.getItem("chamados")) || [];
+
+            var descricaoProblema = localStorage.getItem("descricaoProblema");
+            var tipoProblema = localStorage.getItem("tipoProblema");
+
+            if (descricaoProblema && tipoProblema) {
+                var ultimoChamado = chamados.length > 0 ? chamados[chamados.length - 1] : null;
+                var novoChamado = { descricao: descricaoProblema, tipo: tipoProblema };
+                if (!ultimoChamado || !saoIguais(ultimoChamado, novoChamado)) {
+                    // Adiciona o novo chamado ao array
+                    chamados.push(novoChamado);
+                }
+            }
+
+            // Atualiza o localStorage com os novos chamados
+            localStorage.setItem("chamados", JSON.stringify(chamados));
+
+            // Exibe todos os chamados no histórico
+            exibirChamados(chamados);
+        });
+
+        // Função para verificar se dois chamados são iguais
+        function saoIguais(chamado1, chamado2) {
+            return chamado1.descricao === chamado2.descricao && chamado1.tipo === chamado2.tipo;
+        }
+
+        // Função para exibir os chamados
+        function exibirChamados(chamados) {
+            var historicoChamados = document.getElementById("historicoChamados");
+
+            if (chamados.length > 0) {
+                historicoChamados.innerHTML = "";
+                chamados.forEach(function(chamado, index) {
+                    var tipoNome;
+                    switch(chamado.tipo) {
+                        case '1':
+                            tipoNome = 'Pavimentação';
+                            break;
+                        case '2':
+                            tipoNome = 'Rede Hidráulica';
+                            break;
+                        case '3':
+                            tipoNome = 'Rede Elétrica';
+                            break;
+                        case '4':
+                            tipoNome= 'Fenômeno da Natureza';
+                            break;    
+                        default:
+                            tipoNome = 'Não Informado';
+                    }
+
+                    var chamadoDiv = document.createElement("div");
+                    chamadoDiv.classList.add("chamado");
+                    chamadoDiv.innerHTML = `
+                        <h4>Chamado ${index + 1}</h4>
+                        <p>Tipo: ${tipoNome}</p>
+                        <p>Descrição: ${chamado.descricao}</p>
+                    `;
+                    historicoChamados.appendChild(chamadoDiv);
+                });
+            } else {
+                historicoChamados.innerHTML = "<p>Nenhum chamado encontrado no histórico.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
