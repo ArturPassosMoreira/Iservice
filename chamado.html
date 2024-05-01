@@ -98,9 +98,11 @@
         <h3>Mapa de GPS em Tempo Real</h3>
         <div class="map-container" id="map"></div>
     </div>
-    <div class="chamado col s12 center-align ">
+    
+    <div class="chamado col s6 center-align ">
       <a href="#" id="concluirChamadoBtn" class="green black-text btn">CONCLUIR</a>
   </div>
+   
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -108,10 +110,10 @@
     <script>
         
             var map;
-            var marker; // Variável global para armazenar o marcador
+            var marker; 
 
             function initMap() {
-                // Criar mapa usando a API de Geolocalização do navegador
+                
                 if ("geolocation" in navigator) {
                     navigator.geolocation.getCurrentPosition(function(position) {
                         var latitude = position.coords.latitude;
@@ -123,25 +125,22 @@
                             mapTypeId: google.maps.MapTypeId.ROADMAP
                         };
 
-                        // Criar o objeto do mapa
+                        
                         map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-                        // Atualizar a posição do usuário em tempo real
+                        
                         var updateLocation = function() {
                             navigator.geolocation.getCurrentPosition(function(position) {
                                 var latitude = position.coords.latitude;
                                 var longitude = position.coords.longitude;
 
-                                // Atualizar o centro do mapa com a nova posição
                                 var userLatLng = new google.maps.LatLng(latitude, longitude);
                                 map.setCenter(userLatLng);
 
-                                // Remover o marcador anterior (se existir)
                                 if (marker) {
                                     marker.setMap(null);
                                 }
 
-                                // Adicionar novo marcador na nova posição
                                 marker = new google.maps.Marker({
                                     position: userLatLng,
                                     map: map,
@@ -150,10 +149,9 @@
                             });
                         };
 
-                        // Atualizar a posição a cada 5 segundos
+                        
                         setInterval(updateLocation, 5000);
 
-                        // Iniciar a atualização inicial da posição
                         updateLocation();
                     });
                 } else {
