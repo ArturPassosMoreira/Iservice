@@ -76,13 +76,13 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);
+            var instances = M.Sidenav.init(elems);});
         
             var map;
-            var marker; // Variável global para armazenar o marcador
+            var marker; 
 
             function initMap() {
-                // Criar mapa usando a API de Geolocalização do navegador
+              
                 if ("geolocation" in navigator) {
                     navigator.geolocation.getCurrentPosition(function(position) {
                         var latitude = position.coords.latitude;
@@ -94,25 +94,23 @@
                             mapTypeId: google.maps.MapTypeId.ROADMAP
                         };
 
-                        // Criar o objeto do mapa
+                        
                         map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-                        // Atualizar a posição do usuário em tempo real
+                        
                         var updateLocation = function() {
                             navigator.geolocation.getCurrentPosition(function(position) {
                                 var latitude = position.coords.latitude;
                                 var longitude = position.coords.longitude;
 
-                                // Atualizar o centro do mapa com a nova posição
                                 var userLatLng = new google.maps.LatLng(latitude, longitude);
                                 map.setCenter(userLatLng);
 
-                                // Remover o marcador anterior (se existir)
                                 if (marker) {
                                     marker.setMap(null);
                                 }
 
-                                // Adicionar novo marcador na nova posição
+                                
                                 marker = new google.maps.Marker({
                                     position: userLatLng,
                                     map: map,
@@ -121,21 +119,21 @@
                             });
                         };
 
-                        // Atualizar a posição a cada 5 segundos
+                        
                         setInterval(updateLocation, 5000);
 
-                        // Iniciar a atualização inicial da posição
+                       
                         updateLocation();
                     });
                 } else {
-                    // Navegador não suporta a API de Geolocalização
+                  
                     console.error("Seu navegador não suporta a API de Geolocalização.");
                 }
             }
 
-            // Chamar a função de inicialização do mapa após o carregamento do DOM
+           
             initMap();
-        });
+        
     </script>
     
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV2KukchL5pqIAnCoFtDXcRfZak6UGnKM&callback=initMap&libraries=maps,marker&v=beta"></script>
