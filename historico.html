@@ -28,10 +28,7 @@
             margin-top: 10px;
             margin-bottom: 10px; 
         }
-        .map-container {
-            height: 400px;
-            margin-top: 20px;
-        }
+     
         .chamado {
             margin-top: 20px;
             padding: 10px;
@@ -50,7 +47,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <a href="imagens/logo.png" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
+            <a href="home.html" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
                 <li><a href="home.html">Pagina Principal</a></li>
                 <li><a href="#">Sobre</a></li>
@@ -69,7 +66,10 @@
     <!-- Cabeçalho -->
     <div class="container white center-align">
         <h1>Histórico de Chamados</h1>
-       <div id="historicoChamados"></div>
+        <button class="btn red accent-4 black-text z-depth-5" id="apagarHistoricoBtn">Apagar Histórico</button>
+       <div class="grey lighten-1 z-depth-5" id="historicoChamados"></div>
+       
+       
     </div>
 
     <!-- Compiled and minified JavaScript -->
@@ -84,29 +84,47 @@
 
             var descricaoProblema = localStorage.getItem("descricaoProblema");
             var tipoProblema = localStorage.getItem("tipoProblema");
+            var dataHoraConclusao = localStorage.getItem("dataHoraConclusao");
+            var latitude = localStorage.getItem("latitude");
+            var longitude = localStorage.getItem("longitude");
+
 
             if (descricaoProblema && tipoProblema) {
                 var ultimoChamado = chamados.length > 0 ? chamados[chamados.length - 1] : null;
-                var novoChamado = { descricao: descricaoProblema, tipo: tipoProblema };
+                var novoChamado = { descricao: descricaoProblema, tipo: tipoProblema, dataHoraConclusao: dataHoraConclusao, latitude: latitude, longitude: longitude };
                 if (!ultimoChamado || !saoIguais(ultimoChamado, novoChamado)) {
-                    // Adiciona o novo chamado ao array
+                   
                     chamados.push(novoChamado);
                 }
             }
 
-            // Atualiza o localStorage com os novos chamados
+         
             localStorage.setItem("chamados", JSON.stringify(chamados));
 
-            // Exibe todos os chamados no histórico
+           
             exibirChamados(chamados);
+            var apagarHistoricoBtn = document.getElementById("apagarHistoricoBtn");
+            apagarHistoricoBtn.addEventListener('click', function() {
+                var confirmacao = confirm("Tem certeza que deseja apagar todo o histórico de chamados?");
+                if (confirmacao) {
+                    localStorage.removeItem("chamados");
+                    document.getElementById("historicoChamados").innerHTML = "<p>Histórico de chamados apagado com sucesso.</p>";
+                }
+            });
+            if (chamados.length > 0) {
+                var ultimoChamado = chamados[chamados.length - 1];
+                if (ultimoChamado.latitude && ultimoChamado.longitude) {
+                    exibirLocalizacaoNoMapa(ultimoChamado.latitude, ultimoChamado.longitude);
+                }
+            }
+        
         });
 
-        // Função para verificar se dois chamados são iguais
+        
         function saoIguais(chamado1, chamado2) {
             return chamado1.descricao === chamado2.descricao && chamado1.tipo === chamado2.tipo;
         }
 
-        // Função para exibir os chamados
         function exibirChamados(chamados) {
             var historicoChamados = document.getElementById("historicoChamados");
 
@@ -137,6 +155,9 @@
                         <h4>Chamado ${index + 1}</h4>
                         <p>Tipo: ${tipoNome}</p>
                         <p>Descrição: ${chamado.descricao}</p>
+                        <p>Data e Hora de Conclusão: ${chamado.dataHoraConclusao}</p>
+                        <p>Latitude: ${chamado.latitude} /Longitude:  ${chamado.longitude}</p>
+                        
                     `;
                     historicoChamados.appendChild(chamadoDiv);
                 });
@@ -144,6 +165,8 @@
                 historicoChamados.innerHTML = "<p>Nenhum chamado encontrado no histórico.</p>";
             }
         }
+        
     </script>
+    
 </body>
 </html>

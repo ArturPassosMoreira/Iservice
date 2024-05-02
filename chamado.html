@@ -47,7 +47,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <a href="imagens/logo.png" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
+            <a href="home.html" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
                 <li><a href="home.html">Pagina Principal</a></li>
                 <li><a href="#">Sobre</a></li>
@@ -146,6 +146,8 @@
                                     map: map,
                                     title: 'Sua localização'
                                 });
+                                localStorage.setItem("latitude", latitude);
+                                localStorage.setItem("longitude", longitude);
                             });
                         };
 
@@ -180,7 +182,18 @@ concluirChamadoBtn.addEventListener('click', function(event) {
         alert("Por favor, preencha a descrição do problema.");
     } else {
         localStorage.setItem("descricaoProblema", descricaoProblema);
-                    localStorage.setItem("tipoProblema", tipoProblema);
+        localStorage.setItem("tipoProblema", tipoProblema);
+        var dataAtual = new Date();
+        var horaAtual = dataAtual.getHours();
+        var minutosAtual = dataAtual.getMinutes();
+        var segundosAtual = dataAtual.getSeconds();
+        var diaAtual = dataAtual.getDate();
+        var mesAtual = dataAtual.getMonth() + 1; 
+        var anoAtual = dataAtual.getFullYear();
+        var dataHoraAtual = diaAtual + '/' + mesAtual + '/' + anoAtual + ' ' + horaAtual + ':' + minutosAtual + ':' + segundosAtual;
+
+
+        localStorage.setItem("dataHoraConclusao", dataHoraAtual);
         alert("Chamado concluído! Obrigado por Interagir! Você pode consultar seu chamado no seu historico de chamados. Você será redirecionado para pagina principal em instantes.");
         
             window.location.href = "home.html";
