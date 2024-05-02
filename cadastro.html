@@ -52,8 +52,7 @@
           </div>
           <div class="row valign-wrapper right-align">
             <div class="col s12">
-              <button id="registerBtn" class="btn waves-effect waves-light blue" type="submit">Cadastre
-                <i class="material-icons right">send</i></button>
+            <a href="login.html" target="_blank" class="btn blue">Cadastre-se</a>
             </div>
           </div>
         </form>
@@ -62,31 +61,7 @@
 
      <!-- Compiled and minified JavaScript -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-     <script>
-      document.getElementById('registerForm').addEventListener('submit', async function(event) {
-          event.preventDefault();
-          
-          const nome = document.getElementById('nome').value;
-          const email = document.getElementById('email').value;
-          const senha = document.getElementById('senha').value;
-
-          const response = await fetch('/api/auth/register', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ nome, email, senha })
-          });
-
-          if (response.ok) {
-              alert('Usuário cadastrado com sucesso!');
-              window.location.href = 'login.html'; // Redireciona para a página de login
-          } else {
-              const errorMessage = await response.text();
-              alert('Erro ao cadastrar usuário: ' + errorMessage);
-          }
-      });
-   </script>
+     
      
 </body>
 </html>
