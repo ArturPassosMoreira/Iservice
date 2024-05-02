@@ -32,30 +32,28 @@
     </div>
   </header>
     <div class="container white center-align">
-        <h3>Register</h3>
+        <h3>Registro</h3>
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
               <input id="nome" type="text" class="validate">
-              <label for="nome">name</label>
+              <label for="nome">Nome</label>
             </div>
             <div class="input-field col s12">
               <input id="email" type="email" class="validate">
-              <label for="email">e-mail</label>
+              <label for="email">E-mail</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <input id="senha" type="password" class="validate">
-              <label for="senha">password</label>
+              <label for="senha">Senha</label>
             </div>
           </div>
           <div class="row valign-wrapper right-align">
             <div class="col s12">
-              <a href="login.html" target="_self" class="btn waves-effect waves-light blue" type="submit" name="action">register
-                <i class="material-icons right">send</i>
-                  
-              </a>
+              <button id="registerBtn" class="btn waves-effect waves-light blue" type="submit">Cadastre
+                <i class="material-icons right">send</i></button>
             </div>
           </div>
         </form>
@@ -64,5 +62,31 @@
 
      <!-- Compiled and minified JavaScript -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <script>
+      document.getElementById('registerForm').addEventListener('submit', async function(event) {
+          event.preventDefault();
+          
+          const nome = document.getElementById('nome').value;
+          const email = document.getElementById('email').value;
+          const senha = document.getElementById('senha').value;
+
+          const response = await fetch('/api/auth/register', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ nome, email, senha })
+          });
+
+          if (response.ok) {
+              alert('Usuário cadastrado com sucesso!');
+              window.location.href = 'login.html'; // Redireciona para a página de login
+          } else {
+              const errorMessage = await response.text();
+              alert('Erro ao cadastrar usuário: ' + errorMessage);
+          }
+      });
+   </script>
+     
 </body>
 </html>
