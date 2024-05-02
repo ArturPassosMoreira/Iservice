@@ -46,10 +46,11 @@
             <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <a href="home.html" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
-                <li><a href="home.html">Pagina Principal</a></li>
+                <li><a href="home.html" target="_self">Pagina Principal</a></li>
                 <li><a href="#">Sobre</a></li>
                 <li><a href="historico.html">Historico de Chamados</a></li>
                 <li><a href="#">Contato</a></li>
+                <li><a href="login.html" id="logoutBtn"  target="_self" class="blue-grey lighten-4 red-text">SAIR</a></li>
             </ul>
         </div>
     </nav>
@@ -58,6 +59,7 @@
         <li><a href="#">Sobre</a></li>
         <li><a href="historico.html">Historico de Chamados</a></li>
         <li><a href="#">Contato</a></li>
+        <li><a href="login.html" id="logoutBtn"  target="_self" class="red-text">SAIR</a></li>
     </ul>
 
     <!-- Cabeçalho -->
@@ -77,6 +79,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);});
+            document.getElementById('logoutBtn').addEventListener('click', function(event) {
+        event.preventDefault(); // Evita que o link seja seguido diretamente
+        var confirmed = confirm("Tem certeza de que deseja sair?");
+
+        if (confirmed) {
+            window.location.href = "login.html"; // Redireciona para a página de login
+        } else {
+            // Ação cancelada
+        }
+    });
         
             var map;
             var marker; 
