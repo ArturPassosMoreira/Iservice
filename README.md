@@ -9,10 +9,10 @@ Nosso grupo, identificou uma lacuna crítica na gestão municipal: a falta de pl
 
 Nosso projeto visa contribuir diretamente para os Objetivos de Desenvolvimento Sustentável (ODS) da ONU, especialmente no que diz respeito à construção de cidades e comunidades sustentáveis (ODS 11). Acreditamos que ao melhorar a infraestrutura urbana e a mobilidade nas cidades, estamos promovendo um ambiente mais seguro, eficiente e inclusivo para todos os cidadãos.
 
-# Índice/Sumário
+# Sumário
 
 * [Sobre](#sobre-o-projeto)
-* [Sumário](#índice/sumário)
+* [Sumário](#sumário)
 * [Framework Materialize](#framework-materialize)
 * [Funcionalidades](#funcionalidades)
 * [Produto Final](#produto-final)
