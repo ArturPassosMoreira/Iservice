@@ -1,6 +1,7 @@
 # IService
 
-![IService](https://www.canva.com/design/DAFuK-EI2eo/0QvcR5qe2xJpXjXThSTojg/view?utm_content=DAFuK-EI2eo&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+![ISERVICE - LOGO](https://github.com/ArturPassosMoreira/Iservice/assets/103151820/01a1ecdf-f0cd-4a84-a3d4-bbcf5666ba9b)
+)
 
 # Sobre 
 
