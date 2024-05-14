@@ -63,9 +63,9 @@ Suporte a animações e efeitos interativos, proporcionando uma experiência de 
 
 # Autores
 
-* https://github.com/PedroHFLara
-* https://github.com/ArturPassosMoreira
-* https://github.com/BernardoLCosta
+* [Pedro Henrique Ferreira Lara](https://github.com/PedroHFLara)
+* [Artur Passos Moreira](https://github.com/ArturPassosMoreira)
+* [Bernardo Lionardo Costa](https://github.com/BernardoLCosta)
 
 # Agradecimentos
 
