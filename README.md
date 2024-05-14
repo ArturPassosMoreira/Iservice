@@ -38,11 +38,11 @@ RF006 - O software deve gerar o historico dos chamados criados pelo usuário.
 
 Criado e projetado pelo Google, o Material Design é uma linguagem de design que combina os princípios clássicos do design de sucesso com inovação e tecnologia. O objetivo do Google é desenvolver um sistema de design que permita uma experiência de usuário unificada em todos os seus produtos em qualquer plataforma.
 
-  Como fazer o download e começar a utilizar o Materialize:
+Como fazer o download e começar a utilizar o Materialize:
 
 * [Passo a Passo](https://materializecss.com/getting-started.html) 
 
-  Vantagens do Materialize: 
+Vantagens do Materialize: 
 
 Facilidade de uso e implementação.
 
@@ -51,7 +51,6 @@ Componentes prontos para uso, como barras de navegação, cartões, botões e fo
 Design responsivo, adaptável a diferentes dispositivos e tamanhos de tela.
 
 Suporte a animações e efeitos interativos, proporcionando uma experiência de usuário mais dinâmica.
-
 
 --------------------------------------------------------------------------------------------------------
 
