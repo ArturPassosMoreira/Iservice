@@ -45,8 +45,11 @@ Como fazer o download e começar a utilizar o Materialize:
 Vantagens do Materialize: 
 
 > Facilidade de uso e implementação.
+
 > Componentes prontos para uso, como barras de navegação, cartões, botões e formulários, economizando tempo no desenvolvimento.
+
 > Design responsivo, adaptável a diferentes dispositivos e tamanhos de tela.
+
 > Suporte a animações e efeitos interativos, proporcionando uma experiência de usuário mais dinâmica.
 
 
