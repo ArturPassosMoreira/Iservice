@@ -31,27 +31,29 @@ Criado e projetado pelo Google, o Material Design é uma linguagem de design que
 
 **Vantagens do Materialize:** 
 
-. Facilidade de uso e implementação.
+* Facilidade de uso e implementação.
 
-. Componentes prontos para uso, como barras de navegação, cartões, botões e formulários, economizando tempo no desenvolvimento.
+* Componentes prontos para uso, como barras de navegação, cartões, botões e formulários, economizando tempo no desenvolvimento.
 
-. Design responsivo, adaptável a diferentes dispositivos e tamanhos de tela.
+* Design responsivo, adaptável a diferentes dispositivos e tamanhos de tela.
 
-. Suporte a animações e efeitos interativos, proporcionando uma experiência de usuário mais dinâmica.
+* Suporte a animações e efeitos interativos, proporcionando uma experiência de usuário mais dinâmica.
 
 --------------------------------------------------------------------------------------------------------
 
 # Funcionalidades
 
-Criação de Chamados Geolocalizados: Os usuários podem criar chamados em tempo real, reportando problemas específicos com precisão de localização, como buracos nas estradas, postes de luz quebrados, vazamentos de água, entre outros.
-Interatividade e Engajamento: Além de reportar problemas, os usuários podem interagir com outros chamados através de comentários e avaliações, promovendo uma participação ativa da comunidade na resolução dos problemas locais.
-Gestão Eficiente dos Chamados: Desenvolvemos uma plataforma de gestão que permite aos órgãos públicos e empresas responsáveis gerenciar os chamados recebidos, atribuindo-os às equipes de manutenção e acompanhando o status de resolução em tempo real.
+* Criação de Chamados Geolocalizados: Os usuários podem criar chamados em tempo real, reportando problemas específicos com precisão de localização, como buracos nas estradas, postes de luz quebrados, vazamentos de água, entre outros.
+
+* Interatividade e Engajamento: Além de reportar problemas, os usuários podem interagir com outros chamados através de comentários e avaliações, promovendo uma participação ativa da comunidade na resolução dos problemas locais.
+
+* Gestão Eficiente dos Chamados: Desenvolvemos uma plataforma de gestão que permite aos órgãos públicos e empresas responsáveis gerenciar os chamados recebidos, atribuindo-os às equipes de manutenção e acompanhando o status de resolução em tempo real.
 
 --------------------------------------------------------------------------------------------------------
 
 # Produto Final
 
-* [Produto Final]()
+* [Produto Final](https://arturpassosmoreira.github.io/Iservice/home.html)
 * [Prototipo de Telas](https://www.youtube.com/watch?v=wtOBwyOJfU0)
 * [Materialize](https://drive.google.com/file/d/1dchPyARr_SuabGH0C_BcLbTRk0KVB0zj/view?usp=sharing)
 
