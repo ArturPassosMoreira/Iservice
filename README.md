@@ -1,7 +1,6 @@
 # IService
 
 ![ISERVICE - LOGO](https://github.com/ArturPassosMoreira/Iservice/assets/103151820/01a1ecdf-f0cd-4a84-a3d4-bbcf5666ba9b)
-)
 
 # Sobre 
 
