@@ -52,18 +52,6 @@ Vantagens do Materialize:
 
 --------------------------------------------------------------------------------------------------------
 
-**Prototipo de Telas**
-
-
-
---------------------------------------------------------------------------------------------------------
-
-**Padrão do Projeto**
-
-![image](https://github.com/PedroHFLara/Utopia_2023/assets/103151820/03fee67e-2971-4639-a2f8-3e202aa28a40.png)
-
---------------------------------------------------------------------------------------------------------
-
 # Produto Final
 
 * [Apresentação do Produto Final](https://drive.google.com/file/d/16-SxdPGg7LKmfHeY3CFrzrHkMJRqP4XZ/view?usp=sharing)
