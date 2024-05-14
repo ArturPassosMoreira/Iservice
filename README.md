@@ -10,27 +10,11 @@ Criamos este projeto com o intuito de facilitar a comunicação do cidadão com 
 
 * [Sobre](#sobre-o-projeto)
 * [Sumário](#índice/sumário)
-* [Funcionalidades](#requisitos-funcionais)
 * [Framework Materialize](#framework-materialize)
+* [Funcionalidades](#requisitos-funcionais)
 * [Produto Final](#produto-final)
 * [Autores](#autores)
 * [Agradecimentos](#agradecimentos)
-
---------------------------------------------------------------------------------------------------------
-
-# Requisitos Funcionais
-
-RF001 - O software deve cadastrar o usuário.
-
-RF002 - O software deve logar o usuário.
-
-RF003 - O software deve registrar o chamado.
-
-RF004 - O software deve registrar o status do chamado.
-
-RF005 - O software deve registrar as interações com o chamado.
-
-RF006 - O software deve gerar o historico dos chamados criados pelo usuário.
 
 --------------------------------------------------------------------------------------------------------
 
@@ -51,6 +35,22 @@ Criado e projetado pelo Google, o Material Design é uma linguagem de design que
 . Design responsivo, adaptável a diferentes dispositivos e tamanhos de tela.
 
 . Suporte a animações e efeitos interativos, proporcionando uma experiência de usuário mais dinâmica.
+
+--------------------------------------------------------------------------------------------------------
+
+# Requisitos Funcionais
+
+RF001 - O software deve cadastrar o usuário.
+
+RF002 - O software deve logar o usuário.
+
+RF003 - O software deve registrar o chamado.
+
+RF004 - O software deve registrar o status do chamado.
+
+RF005 - O software deve registrar as interações com o chamado.
+
+RF006 - O software deve gerar o historico dos chamados criados pelo usuário.
 
 --------------------------------------------------------------------------------------------------------
 
