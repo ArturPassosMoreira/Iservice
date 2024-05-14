@@ -4,41 +4,57 @@
 
 # Sobre 
 
-
+Criamos este projeto com o intuito de facilitar a comunicação do cidadão com os orgãos publicos, para relatar os problemas relacionados a infraestrutura da sua cidade.
 
 # Índice/Sumário
 
 * [Sobre](#sobre-o-projeto)
 * [Sumário](#índice/sumário)
-* [Processos](#processos)
+* [Funcionalidades](#requisitos-funcionais)
+* [Framework Materialize](#framework-materialize)
 * [Produto Final](#produto-final)
-* [Contribuição](#contribuição)
 * [Autores](#autores)
 * [Agradecimentos](#agradecimentos)
 
-# Processos
+--------------------------------------------------------------------------------------------------------
+
+# Requisitos Funcionais
+
+RF001 - O software deve cadastrar o usuário.
+
+RF002 - O software deve logar o usuário.
+
+RF003 - O software deve registrar o chamado.
+
+RF004 - O software deve registrar o status do chamado.
+
+RF005 - O software deve registrar as interações com o chamado.
+
+RF006 - O software deve gerar o historico dos chamados criados pelo usuário.
 
 --------------------------------------------------------------------------------------------------------
 
-**Papéis Scrum do Projeto**
+**Framework Materialize**
 
-Product Owner: Pedro Lara
+Criado e projetado pelo Google, o Material Design é uma linguagem de design que combina os princípios clássicos do design de sucesso com inovação e tecnologia. O objetivo do Google é desenvolver um sistema de design que permita uma experiência de usuário unificada em todos os seus produtos em qualquer plataforma.
 
-Scrum Master: Artur Passos
+Como fazer o download e começar a utilizar o Materialize:
 
-Desenvoldedor: Bernardo Costa
+* [Passo a Passo](https://materializecss.com/getting-started.html) 
+
+Vantagens do Materialize: 
+
+> Facilidade de uso e implementação.
+> Componentes prontos para uso, como barras de navegação, cartões, botões e formulários, economizando tempo no desenvolvimento.
+> Design responsivo, adaptável a diferentes dispositivos e tamanhos de tela.
+> Suporte a animações e efeitos interativos, proporcionando uma experiência de usuário mais dinâmica.
+
 
 --------------------------------------------------------------------------------------------------------
 
-**StakeHolders do Projeto**
+**Prototipo de Telas**
 
-Nível de Influência: 1 – Alto | 2 – Médio | 3 – Baixo
 
-1 - Gerente da Utopia: Responsável pela empresa e gestão do software.
-
-1 - Funcionários da Utopia: Usuários responsáveis por alimentar o software com as informações.
-
-2 - Time de desenvolvedores: Responsável pela criação e suporte do software.
 
 --------------------------------------------------------------------------------------------------------
 
@@ -48,64 +64,12 @@ Nível de Influência: 1 – Alto | 2 – Médio | 3 – Baixo
 
 --------------------------------------------------------------------------------------------------------
 
-**Tecnica de Levantamento de Requisitos**
-
-Técnica de Etnografia (Observação): Escolhemos esta técnica pelo simples fato de poder estar observando o dia – a – dia de todos os funcionários da empresa e as ações que o gerente realiza. Para assim verificarmos e entrarmos em acordo com ambas as partes onde decidimos quais serão os requisitos funcionais e não-funcionais do software.
-
---------------------------------------------------------------------------------------------------------
-
-**Requisitos Funcionais**
-
-RF001 - O software deve cadastrar o usuário.
-
-RF002 - O software deve logar o usuário.
-
-RF003 - O software deve cadastrar fornecedor.
-
-RF004 - O software deve cadastrar matéria-prima.
-
-RF005 - O software deve cadastrar estoque.
-
-RF006 - O software deve consultar estoque.
-
-RF007 - O software deve gerar relatório de produção.
-
-RF008 - O software deve gerar histórico de entrada.
-
-RF009 - O software deve gerar histórico de saída.
-
-RF010 - O software deve filtrar informações.
-
-**Requisitos Não - Funcionais**
-
-RNF001 - O software deverá executar no Windows.
-
-RNF002 - O software deverá buscar informações off-line.
-
-RNF003 - Software na cor preto e branco.
-
-RNF004 - Software deverá ser desenvolvido na linguagem Java.
-
-RNF005 - Software deverá se comunicar com o SQL Server. 
-
---------------------------------------------------------------------------------------------------------
-
-**Backlog do Projeto**
-
-![image](https://github.com/PedroHFLara/Utopia_2023/assets/103151820/5ec6b01a-37bf-4a14-96b4-f53ebe674b74.png)
-
---------------------------------------------------------------------------------------------------------
-
 # Produto Final
 
 * [Apresentação do Produto Final](https://drive.google.com/file/d/16-SxdPGg7LKmfHeY3CFrzrHkMJRqP4XZ/view?usp=sharing)
 * [Prototipo de Telas](https://drive.google.com/file/d/10cPDCY105ltoUrccb6-IICCNEtNDNB_r/view?usp=sharing)
 * [Slide Final](./Utopia.pdf)
 
-# Contribuição
-
-Leia o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para saber detalhes sobre o nosso código de conduta e o processo de envio de solicitações *pull* (*Pull Request*) 
-para nós.
 
 # Autores
 
@@ -114,5 +78,7 @@ para nós.
 * https://github.com/BernardoLCosta
 
 # Agradecimentos
+
+Agradecer a todos pela execução deste projeto.
 
 Agradecer a todos pela execução deste projeto.
