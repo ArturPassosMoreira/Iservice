@@ -9,6 +9,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        
+        
+
         .container {
             padding: 10px;
             margin-top: 10px;
@@ -29,13 +33,18 @@
             margin-bottom: 10px; 
         }
         .map-container {
-            height: 400px;
+            height:600px;
             margin-top: 20px;
         }
          .chamado>a{
             margin: 15px;
             border-radius: 9px;
             box-shadow: 2px 2px 2px black;
+        }
+        h3{
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
         }
     </style>
 </head>
@@ -63,13 +72,13 @@
     </ul>
 
     <!-- Cabeçalho -->
-    <div class="container white center-align">
-        <h3>Mapa de GPS em Tempo Real</h3>
+    <div class="container center-align ">
+        <h3 class=" white-text">iService</h3>
+
         <div class="map-container" id="map"></div>
     </div>
     <div class="chamado col s12 center-align ">
-        <a href="interagir.html" class="blue black-text btn">Interagir</a>
-        <a href="chamado.html" target="_self" class=" green black-text btn" type="submit" name="action">Chamado</a>
+        <a href="chamado.html" target="_self" class=" green black-text btn" type="submit" name="action"> ABRIR CHAMADO</a>
     </div>
 
     <!-- Compiled and minified JavaScript -->
