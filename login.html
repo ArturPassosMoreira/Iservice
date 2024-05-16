@@ -9,58 +9,103 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         .header {
-          background-color: red;
-          padding: 10px 0;
+            background-color: red;
+            padding: 10px 0;
         }
         .header img {
-         padding-bottom: 10px;
-          height: 70px;
-          width: 70px;
-          margin-left: 20px;
+            padding-bottom: 10px;
+            height: 70px;
+            width: 70px;
+            margin-left: 20px;
         }
         .container{
-            padding: 10px;
-            margin-top: 10px;
+            padding: 20px 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+
         }
-      </style>
+        .card-panel {
+            margin: 10px;
+            padding: 20px;
+            width: 45%;
+            height: 500px;
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box; /* Adicionado para incluir padding na largura */
+        }
+        .centered-button {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body class="red accent-2">
-      <!-- Cabeçalho -->
-  <header class="header valign-wrapper center-align">
-    <div class="container">
-      <img src="imagens/logo.png" alt="Logo">
+    <!-- Cabeçalho -->
+    <header class="header valign-wrapper center-align">
+        <div class="container">
+            <img src="imagens/logo.png" alt="Logo">
+        </div>
+    </header>
+    <div class="container grey lighten-2 center-align">
+        <div style="width: 100%;">
+            <div class="card-panel">
+                <h3>Login</h3>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate">
+                            <label for="email">E-mail</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="senha" type="password" class="validate">
+                            <label for="senha">Senha</label>
+                        </div>
+                    </div>
+                    <div class="row centered-button">
+                        <div class="col s12">
+                            <button href="home.html" target="_self" class="btn waves-effect waves-light blue" type="submit" name="action">Login
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-panel">
+                <h3>Cadastro</h3>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="nome" type="text" class="validate">
+                            <label for="nome">Nome</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email-cadastro" type="email" class="validate">
+                            <label for="email-cadastro">E-mail</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="senha-cadastro" type="password" class="validate">
+                            <label for="senha-cadastro">Senha</label>
+                        </div>
+                    </div>
+                    <div class="row centered-button">
+                        <div class="col s12">
+                            <button href="#" class="btn waves-effect waves-light green" type="submit" name="action">Cadastrar
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </header>
-    <div class="container white center-align">
-        <h3>Login</h3>
-        <form class="col s12">
-          <div class="row">
-            
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">E-mail</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="senha" type="password" class="validate">
-              <label for="senha">Senha</label>
-            </div>
-          </div>
-          <div class="row valign-wrapper right-align">
-            <div class="col s12">
-              <a href="home.html" target="_self" class="btn waves-effect waves-light blue" type="submit" name="action">Login
-                <i class="material-icons right">send</i>
-                  
-              </a>
-            </div>
-          </div>
-        </form>
-         <a href="cadastro.html" target="_self">Não e cadastrado?</a>
-      </div>
-    
 
-     <!-- Compiled and minified JavaScript -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
