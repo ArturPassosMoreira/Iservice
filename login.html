@@ -22,15 +22,23 @@
             width: 100%;
             box-sizing: border-box;
             text-align: center;
-            overflow-wrap: break-word; /* Adicionado para evitar que o texto saia para fora */
+            overflow-wrap: break-word;
+            border-radius: 15px;
+            background-image:linear-gradient( red, rgba(255, 0, 0, 0.74) , rgba(145, 2, 2, 0.514));
+            color: white;
+            box-shadow:  1px 1px 5px black;
+           
         }
         .centered-button {
             display: flex;
             justify-content: center;
         }
+        .form-container {
+            padding: 0 10px; 
+        }
         @media (min-width: 600px) {
             .card-panel {
-                max-width: 700px; /* Ajuste a largura máxima dos cartões */
+                max-width: 700px; 
             }
         }
         nav {
@@ -64,8 +72,7 @@
 
     <!-- Sidenav -->
     <ul id="slide-out" class="sidenav">
-        <li><a href="home.html"><i class="material-icons">home</i>Home</a></li>
-        <!-- Adicione mais itens de menu aqui -->
+        
     </ul>
 
     <div class="container grey lighten-2 center-align">
@@ -73,7 +80,7 @@
             <div class="col s12 m6">
                 <div class="card-panel">
                     <h3>Login</h3>
-                    <form class="col s12">
+                    <form class="col s12 form-container"><br>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="email" type="email" class="validate">
@@ -99,7 +106,7 @@
             <div class="col s12 m6">
                 <div class="card-panel">
                     <h3>Cadastro</h3>
-                    <form class="col s12">
+                    <form class="col s12 form-container"><br>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="nome" type="text" class="validate">
