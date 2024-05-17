@@ -3,58 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login e Cadastro</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         .container {
-            padding: 20px 10px;
-            margin: auto;
-            margin-top: 30px;
+            margin: 30px auto;
+            
             margin-bottom: 30px;
             border-radius: 10px;
         }
-
+            .row{
+                height:70px;
+                
+            }
         .card-panel {
-            margin: 30px auto;
+            margin: 20px; /* Adiciona espaçamento ao redor dos cards */
             padding: 20px;
-            width: 100%;
             box-sizing: border-box;
             text-align: center;
             overflow-wrap: break-word;
             border-radius: 15px;
-            background-image:linear-gradient( red, rgba(255, 0, 0, 0.74) , rgba(145, 2, 2, 0.514));
+            background-image: linear-gradient(red, rgba(255, 0, 0, 0.74), rgba(145, 2, 2, 0.514));
             color: white;
-            box-shadow:  1px 1px 5px black;
-           
+            box-shadow: 1px 1px 5px black;
         }
+
         .centered-button {
             display: flex;
             justify-content: center;
         }
+
         .form-container {
-            padding: 0 10px; 
+            padding: 0 10px;
         }
+
         @media (min-width: 600px) {
             .card-panel {
-                max-width: 700px; 
+                max-width: 500px;
+                margin: 20px auto; /* Ajusta a margem no layout responsivo */
             }
         }
+
         nav {
             background-color: rgb(255, 0, 0);
         }
+
         nav ul a {
             color: white;
         }
+
         .sidenav-trigger {
             display: block;
         }
+
         .brand-logo img {
             height: 40px;
             width: auto;
             margin-top: 10px;
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
+        }
+
+        .error-message {
+            color: yellow;
+            font-size: 1.2em;
         }
     </style>
 </head>
@@ -72,62 +85,67 @@
 
     <!-- Sidenav -->
     <ul id="slide-out" class="sidenav">
-        
+        <!-- Adicione itens de menu aqui se necessário -->
     </ul>
 
-    <div class="container grey lighten-2 center-align">
+    <div class="container center-align">
         <div class="row">
-            <div class="col s12 m6">
+            <div class="col s12 m6 white">
                 <div class="card-panel">
                     <h3>Login</h3>
-                    <form class="col s12 form-container"><br>
+                    <form class="col s12 form-container " id="login-form"><br>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="email" type="email" class="validate">
+                                <input id="email" type="email" class="validate" required>
                                 <label for="email">E-mail</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="senha" type="password" class="validate">
+                                <input id="senha" type="password" class="validate" required>
                                 <label for="senha">Senha</label>
                             </div>
                         </div>
                         <div class="row centered-button">
                             <div class="col s12">
-                                <button href="home.html" target="_self" class="btn waves-effect waves-light blue" type="submit" name="action">Login
+                                <button class="btn waves-effect waves-light blue" type="submit" name="action">Login
                                     <i class="material-icons right">send</i>
                                 </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <span class="error-message" id="error-message"></span>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="col s12 m6">
+            <div class="col s12 m6 white">
                 <div class="card-panel">
                     <h3>Cadastro</h3>
-                    <form class="col s12 form-container"><br>
+                    <form class="col s12 form-container "><br>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="nome" type="text" class="validate">
+                                <input id="nome" type="text" class="validate" required>
                                 <label for="nome">Nome</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="email-cadastro" type="email" class="validate">
+                                <input id="email-cadastro" type="email" class="validate" required>
                                 <label for="email-cadastro">E-mail</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="senha-cadastro" type="password" class="validate">
+                                <input id="senha-cadastro" type="password" class="validate" required>
                                 <label for="senha-cadastro">Senha</label>
                             </div>
                         </div>
                         <div class="row centered-button">
                             <div class="col s12">
-                                <button href="#" class="btn waves-effect waves-light green" type="submit" name="action">Cadastrar
+                                <button class="btn waves-effect waves-light green" type="submit" name="action">Cadastrar
                                     <i class="material-icons right">send</i>
                                 </button>
                             </div>
@@ -144,6 +162,22 @@
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
+        });
+
+        // Função para validar o formulário de login
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            var email = document.getElementById('email').value;
+            var senha = document.getElementById('senha').value;
+            var errorMessage = document.getElementById('error-message');
+            
+            // Limpa a mensagem de erro
+            errorMessage.textContent = '';
+            
+            // Verifica se os campos estão preenchidos
+            if (!email || !senha) {
+                event.preventDefault(); // Impede a submissão do formulário
+                errorMessage.textContent = 'Por favor, preencha todos os campos.';
+            }
         });
     </script>
 </body>
