@@ -55,7 +55,7 @@
             margin-bottom: 10px;
         }
         .error-message {
-            color: yellow;
+            color: rgb(255, 0, 0);
             font-size: 1.2em;
         }
         .welcome-section {
@@ -79,33 +79,41 @@
             background-color: #ff0000;
         }
         .video-container {
-            margin: auto;
-            width: 300px;
-            height: 169px; /* 16:9 ratio */
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            z-index: 1000;
-            overflow: hidden;
-        }
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-        }
-        .video-container .close-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: #ff0000;
-            border: none;
-            color: white;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            text-align: center;
-            line-height: 25px;
-        }
+    position: relative; 
+    max-width: 100%; 
+    height: 0;
+    padding-bottom: 56.25%; 
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.video-container iframe {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+}
+
+.video-container .close-btn {
+    position: absolute; 
+    top: 5px;
+    right: 5px;
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 25px;
+    z-index: 10; 
+}
+
         #login-btn {
             position: absolute;
             top: 10px;
@@ -135,6 +143,7 @@
                 <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
                 <iframe width="300" height="169" src="https://www.youtube.com/embed/wtOBwyOJfU0?si=EN9rRd7bjatKnITa&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
+            
         </div>
 
         <div id="login" class="row white">
@@ -198,6 +207,11 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <span class="error-message" id="cadastro-error-message"></span>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -244,13 +258,21 @@
                 var email = document.getElementById('email-cadastro').value;
                 var senha = document.getElementById('senha-cadastro').value;
 
-                var newUser = { nome: nome, email: email, senha: senha };
+                var existingUser = usersData.find(function(user) {
+                    return user.email === email;
+                });
 
-                usersData.push(newUser);
-                localStorage.setItem('users', JSON.stringify(usersData));
-                alert('Cadastro realizado com sucesso!');
-                localStorage.setItem('loggedInUser', JSON.stringify(newUser));
-                window.location.href = 'home.html'; // Alterado para redirecionar para home.html
+                if (existingUser) {
+                    document.getElementById('cadastro-error-message').textContent = 'E-mail já cadastrado. Tente outro e-mail.';
+                } else {
+                    var newUser = { nome: nome, email: email, senha: senha };
+
+                    usersData.push(newUser);
+                    localStorage.setItem('users', JSON.stringify(usersData));
+                    alert('Cadastro realizado com sucesso!');
+                    localStorage.setItem('loggedInUser', JSON.stringify(newUser));
+                    window.location.href = 'home.html'; // Alterado para redirecionar para home.html
+                }
             });
         });
     </script>
