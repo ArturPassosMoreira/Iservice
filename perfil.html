@@ -5,40 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do Usuário</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
         .container {
-            margin: 30px auto;
+            margin-top: 30px;
+        }
+        .profile-card {
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #ff0000;
+            color: #fff;
+            text-align: center;
+            box-shadow: 1px 1px 5px black;
+            font-family: "Bebas Neue", sans-serif;
         }
         .row {
             margin-bottom: 20px;
-        }
-        .card-panel {
-            padding: 20px;
-            box-sizing: border-box;
-            text-align: center;
-            overflow-wrap: break-word;
-            border-radius: 15px;
-            background-image: linear-gradient(red, rgba(255, 0, 0, 0.74), rgba(145, 2, 2, 0.514));
-            color: rgb(255, 255, 255);
-            box-shadow: 1px 1px 5px black;
-            font-family: "Bebas Neue", sans-serif;
         }
         .centered-button {
             display: flex;
             justify-content: center;
         }
-        .form-container {
-            padding: 0 10px;
-        }
-        @media (min-width: 600px) {
-            .card-panel {
-                max-width: 500px;
-                margin: 20px auto;
-            }
-        }
         nav {
-            background-color: rgb(255, 0, 0);
+            background-color: red;
         }
         nav ul a {
             color: white;
@@ -52,88 +42,64 @@
             margin-top: 10px;
             margin-bottom: 10px;
         }
-        .error-message {
-            color: yellow;
-            font-size: 1.2em;
-        }
-        .welcome-section {
-            text-align: center;
-            padding: 50px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            margin: 30px;
-        }
-        .welcome-section h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3em;
-            color: #ff0000;
-        }
-        .welcome-section p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-        .welcome-section .btn {
-            background-color: #ff0000;
-        }
-        .video-container {
-            margin: auto;
-            width: 300px;
-            height: 169px; /* 16:9 ratio */
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            z-index: 1000;
-            overflow: hidden;
-        }
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-        }
-        .video-container .close-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: #ff0000;
-            border: none;
-            color: white;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            text-align: center;
-            line-height: 25px;
-        }
-        #login-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #2196F3 !important;
-        }
     </style>
 </head>
 <body class="red accent-2">
+
     <!-- Navbar -->
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <!-- Adicione itens de menu aqui se necessário -->
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="home.html" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
+                <li><a href="home.html" target="_self"><i class="material-icons">home</i></a></li>
+                <li><a href="historico.html"><i class="material-icons">manage_search</i></a></li>
+                <li><a href="sobre.html" target="_self">Sobre</a></li>
+                <li><a href="perfil.html"><i class="material-icons">account_circle</i></a></li>
+                <li><a href="login.html" id="logoutBtn" target="_self" class="blue-grey lighten-4 red-text"><i class="material-icons">logout</i></a></li>
             </ul>
         </div>
     </nav>
+    <ul id="slide-out" class="sidenav">
+        <li><a href="home.html">Pagina Principal</a></li>
+        <li><a href="sobre.html" target="_self">Sobre</a></li>
+        <li><a href="historico.html">Historico de Chamados</a></li>
+        <li><a href="perfil.html">Perfil Usuário</a></li>
+        <li><a href="login.html" id="logoutBtn" target="_self" class="red-text">SAIR</a></li>
+    </ul>
 
     <div class="container center-align">
         <div class="row white">
             <div class="col s12">
-                <div class="card-panel">
+                <div class="card-panel profile-card">
                     <h3>Perfil do Usuário</h3>
-                    <p><strong>Nome:</strong> <span id="user-name"></span></p>
-                    <p><strong>E-mail:</strong> <span id="user-email"></span></p>
-                    <div class="centered-button">
-                        <a href="home.html" class="btn waves-effect waves-light blue">VOLTAR</a>
-                    </div>
+                    
                 </div>
+                <p><strong>Nome:</strong> <span id="user-name"></span></p>
+                    <p><strong>E-mail:</strong> <span id="user-email"></span></p>
+
+                    <h4>Alterar Senha</h4>
+                    <div class="row">
+                        <form class="col s12" id="password-form">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="new-password" type="password" class="validate" required>
+                                    <label for="new-password">Nova Senha</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="confirm-password" type="password" class="validate" required>
+                                    <label for="confirm-password">Confirmar Senha</label>
+                                </div>
+                            </div>
+                            <div class="centered-button">
+                                <button class="btn waves-effect waves-light blue" type="submit">Alterar Senha</button>
+                            </div>
+                        </form>
+                    </div>
+
+                  
             </div>
         </div>
     </div>
@@ -142,6 +108,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+
             var user = JSON.parse(localStorage.getItem('loggedInUser'));
             if (user) {
                 document.getElementById('user-name').textContent = user.nome;
@@ -150,6 +119,32 @@
                 alert('Nenhum usuário logado.');
                 window.location.href = 'index.html';
             }
+
+            document.getElementById('password-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var newPassword = document.getElementById('new-password').value;
+                var confirmPassword = document.getElementById('confirm-password').value;
+
+                if (newPassword !== confirmPassword) {
+                    alert('As senhas não coincidem.');
+                    return;
+                }
+
+                user.senha = newPassword;
+                localStorage.setItem('loggedInUser', JSON.stringify(user));
+                
+                // Atualiza a senha do usuário na lista de usuários
+                var users = JSON.parse(localStorage.getItem('users')) || [];
+                var updatedUsers = users.map(function(u) {
+                    if (u.email === user.email) {
+                        u.senha = newPassword;
+                    }
+                    return u;
+                });
+                localStorage.setItem('users', JSON.stringify(updatedUsers));
+
+                alert('Senha alterada com sucesso.');
+            });
         });
     </script>
 </body>
