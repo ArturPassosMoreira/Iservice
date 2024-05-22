@@ -4,16 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do Usuário</title>
-    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-         .container {
-            padding: 10px;
-            margin-top: 10px;
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        .container {
+            margin: 30px auto;
         }
-         nav {
-            background-color: red;
+        .row {
+            margin-bottom: 20px;
+        }
+        .card-panel {
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            overflow-wrap: break-word;
+            border-radius: 15px;
+            background-image: linear-gradient(red, rgba(255, 0, 0, 0.74), rgba(145, 2, 2, 0.514));
+            color: rgb(255, 255, 255);
+            box-shadow: 1px 1px 5px black;
+            font-family: "Bebas Neue", sans-serif;
+        }
+        .centered-button {
+            display: flex;
+            justify-content: center;
+        }
+        .form-container {
+            padding: 0 10px;
+        }
+        @media (min-width: 600px) {
+            .card-panel {
+                max-width: 500px;
+                margin: 20px auto;
+            }
+        }
+        nav {
+            background-color: rgb(255, 0, 0);
         }
         nav ul a {
             color: white;
@@ -25,125 +50,107 @@
             height: 40px;
             width: auto;
             margin-top: 10px;
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
         }
-        .container{
-            padding: 10px;
-            margin-top: 10px;
+        .error-message {
+            color: yellow;
+            font-size: 1.2em;
         }
-        .fixed-info {
-          color: #333;
-          font-size: 18px;
-          font-weight: bold;
+        .welcome-section {
+            text-align: center;
+            padding: 50px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 30px;
         }
-        .edit-icon {
-          color: #777;
-          cursor: pointer;
+        .welcome-section h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3em;
+            color: #ff0000;
         }
-      </style>
+        .welcome-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .welcome-section .btn {
+            background-color: #ff0000;
+        }
+        .video-container {
+            margin: auto;
+            width: 300px;
+            height: 169px; /* 16:9 ratio */
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+        }
+        .video-container .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #ff0000;
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 25px;
+        }
+        #login-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #2196F3 !important;
+        }
+    </style>
 </head>
 <body class="red accent-2">
-    <!-- Cabeçalho -->
+    <!-- Navbar -->
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <a href="home.html" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
-                <li><a href="home.html" target="_self"><i class="material-icons">home</i></a></li>
-                <li><a href="historico.html"> <li><a href="historico.html"><i class="material-icons">manage_search</i></a></li></a></li>
-                <li><a href="sobre.html" target="_self">Sobre</a></li>
-                <li><a href="perfil.html"><i class="material-icons">account_circle</i></a></li>
-                <li><a href="login.html" id="logoutBtn"  target="_self" class="blue-grey lighten-4 red-text"><i class="material-icons">logout</i></a></li>
+            <a href="#" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <!-- Adicione itens de menu aqui se necessário -->
             </ul>
         </div>
     </nav>
-    <ul id="slide-out" class="sidenav">
-        <li><a href="home.html">Pagina Principal</a></li>
-        <li><a href="sobre.html" target="_self">Sobre</a></li>
-        <li><a href="historico.html">Historico de Chamados</a></li>
-        <li><a href="perfil.html">Perfil Usuário</a></li>
-        <li><a href="login.html" id="logoutBtn"  target="_self" class="red-text">SAIR</a></li>
-    </ul>
 
-    <div class="container white center-align">
-        <h3>Dados do Usuário</h3>
-        <div class="row left-align">
-            <div class="input-field col s12">
-                <span class="fixed-info">Nome:</span>
-                <span id="nome" class="editable">Nome do Usuário</span>
-                <i class="material-icons edit-icon"><span class="material-symbols-outlined">edit_square</i>
-            </div>
-            <div class="input-field col s12">
-                <span class="fixed-info">Contato:</span>
-                <span id="contact" class="editable">123456789</span>
-                <i class="material-icons edit-icon">edit_square</i>
-            </div>
-            <div class="input-field col s12">
-                <span class="fixed-info">E-mail:</span>
-                <span id="email" class="editable">exemplo@email.com</span>
-            </div>
-           
-        </div>
-        <h4>Redefinir Senha</h4>
-         <div class="input-field col s12">
-                <input id="novaSenha" type="password" class="validate">
-                <label for="novaSenha">Nova Senha</label>
-            </div>
-            <div class="input-field col s12">
-                <input id="confirmarSenha" type="password" class="validate">
-                <label for="confirmarSenha">Confirmar Nova Senha</label>
-            </div>
-        <div class="row valign-wrapper right-align">
+    <div class="container center-align">
+        <div class="row white">
             <div class="col s12">
-                <button class="btn blue" onclick="redefinirSenha()">Redefinir Senha</button>
+                <div class="card-panel">
+                    <h3>Perfil do Usuário</h3>
+                    <p><strong>Nome:</strong> <span id="user-name"></span></p>
+                    <p><strong>E-mail:</strong> <span id="user-email"></span></p>
+                    <div class="centered-button">
+                        <a href="home.html" class="btn waves-effect waves-light blue">VOLTAR</a>
+                    </div>
+                </div>
             </div>
         </div>
-       
     </div>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        
-          document.addEventListener('DOMContentLoaded', function() {
-              var elems = document.querySelectorAll('.sidenav');
-              var instances = M.Sidenav.init(elems);
-          });
-        // Função para mostrar os campos de edição quando o ícone de edição é clicado
-        document.querySelectorAll('.edit-icon').forEach(icon => {
-            icon.addEventListener('click', () => {
-                const field = icon.previousElementSibling;
-                field.contentEditable = true;
-                field.focus();
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            var user = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (user) {
+                document.getElementById('user-name').textContent = user.nome;
+                document.getElementById('user-email').textContent = user.email;
+            } else {
+                alert('Nenhum usuário logado.');
+                window.location.href = 'index.html';
+            }
         });
-
-        
-          // Função para enviar a redefinição de senha
-          function redefinirSenha() {
-            // Obter a nova senha do campo de entrada
-            const novaSenha = document.getElementById('novaSenha').value;
-            const confirmarSenha = document.getElementById('confirmarSenha').value;
-
-// Verifica se as senhas coincidem
-  // Verifica se a nova senha está em branco
-  if (novaSenha.trim() === '') {
-                alert('Por favor, digite a nova senha.');
-                return;
-            }
-
-            // Verifica se as senhas coincidem
-            if (novaSenha !== confirmarSenha) {
-                alert('As senhas não coincidem. Por favor, digite a mesma senha nos dois campos.');
-                return;
-            }
-
-            // Aqui você pode adicionar lógica para enviar a nova senha para o servidor
-            // Por exemplo, usando AJAX ou outro método de envio de formulário
-            alert('Senha redefinida com sucesso!');
-            window.location.href = "home.html";
-        }
-
     </script>
 </body>
 </html>

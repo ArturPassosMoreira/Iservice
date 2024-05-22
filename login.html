@@ -174,7 +174,6 @@
                     <h3>Cadastro</h3>
                     <form class="col s12 form-container" id="cadastro-form"><br>
                         <div class="row">
-                           
                             <div class="input-field col s12">
                                 <input id="nome" type="text" class="validate" required>
                                 <label for="nome">Nome</label>
@@ -219,83 +218,39 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Se existir algum usuário armazenado no localStorage, recupera os dados
             var usersData = JSON.parse(localStorage.getItem('users')) || [];
 
-            // Função para validar e cadastrar um novo usuário
-            function cadastrarUsuario(nome, email, senha) {
-                // Verifica se o email já está cadastrado
-                var usuarioExistente = usersData.find(function(user) {
-                    return user.email === email;
+            document.getElementById('login-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var email = document.getElementById('email').value;
+                var senha = document.getElementById('senha').value;
+
+                var user = usersData.find(function(user) {
+                    return user.email === email && user.senha === senha;
                 });
 
-                if (usuarioExistente) {
-                    alert('Este email já está cadastrado.');
-                    return;
+                if (user) {
+                    localStorage.setItem('loggedInUser', JSON.stringify(user));
+                    alert('Login realizado com sucesso!');
+                    window.location.href = 'home.html'; // Alterado para redirecionar para home.html
+                } else {
+                    document.getElementById('error-message').textContent = 'Email ou senha incorretos. Tente novamente.';
                 }
+            });
 
-                // Cria um novo usuário
-                var novoUsuario = {
-                    nome: nome,
-                    email: email,
-                    senha: senha
-                };
-
-                // Adiciona o novo usuário aos dados existentes
-                usersData.push(novoUsuario);
-
-                // Atualiza os dados no localStorage
-                localStorage.setItem('users', JSON.stringify(usersData));
-                alert('Usuário cadastrado com sucesso!');
-            }
-
-            // Função para exibir alerta de cadastro bem-sucedido
-            function exibirAlertaCadastro() {
-                alert('Usuário cadastrado com sucesso!');
-            }
-
-            // Função para exibir alerta de credenciais inválidas
-            function exibirAlertaErroLogin() {
-                alert('E-mail ou senha incorretos. Por favor, tente novamente.');
-            }
-
-            // Função para redirecionar para a página home após o login
-            function redirecionarParaHome() {
-                window.location.href = 'home.html';
-            }
-
-            // Event listener para o formulário de cadastro
             document.getElementById('cadastro-form').addEventListener('submit', function(event) {
-                event.preventDefault(); // Impede o envio padrão do formulário
-
-                // Captura os valores dos campos do formulário
+                event.preventDefault();
                 var nome = document.getElementById('nome').value;
                 var email = document.getElementById('email-cadastro').value;
                 var senha = document.getElementById('senha-cadastro').value;
 
-                // Chama a função para cadastrar o usuário
-                cadastrarUsuario(nome, email, senha);
-                exibirAlertaCadastro();
-            });
+                var newUser = { nome: nome, email: email, senha: senha };
 
-            // Event listener para o formulário de login
-            document.getElementById('login-form').addEventListener('submit', function(event) {
-                event.preventDefault(); // Impede o envio padrão do formulário
-
-                // Captura os valores dos campos do formulário
-                var email = document.getElementById('email').value;
-                var senha = document.getElementById('senha').value;
-
-                // Verifica se os dados correspondem aos dados armazenados
-                var usuarioEncontrado = usersData.find(function(user) {
-                    return user.email === email && user.senha === senha;
-                });
-
-                if (usuarioEncontrado) {
-                    redirecionarParaHome();
-                } else {
-                    exibirAlertaErroLogin();
-                }
+                usersData.push(newUser);
+                localStorage.setItem('users', JSON.stringify(usersData));
+                alert('Cadastro realizado com sucesso!');
+                localStorage.setItem('loggedInUser', JSON.stringify(newUser));
+                window.location.href = 'home.html'; // Alterado para redirecionar para home.html
             });
         });
     </script>
