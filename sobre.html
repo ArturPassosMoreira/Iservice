@@ -6,12 +6,13 @@
     <title>Sobre</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-          .container {
-            padding: 10px;
-            margin-top: 10px;
+        body {
+            background-color: #f3f3f3;
+            font-family: 'Roboto', sans-serif;
         }
-         nav {
+        nav {
             background-color: red;
         }
         nav ul a {
@@ -26,19 +27,54 @@
             margin-top: 10px;
             margin-bottom: 10px; 
         }
-        .container{
-            padding: 10px;
+        .container {
+            padding: 20px;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2, h3, h4, h5 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: #333;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        h3 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        h4 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        h5 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        a {
+            color: red;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .link-section a {
+            display: inline-block;
             margin-top: 10px;
         }
-        main{
-            
-            display: grid;
-            width: 95vh;
-            margin: auto;
-            padding: 15px;
-            margin-top: 4px;
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 0 5px;
+            border-radius: 3px;
         }
-      </style>
+    </style>
 </head>
 <body class="red accent-2">
     <nav>
@@ -47,7 +83,7 @@
             <a href="home.html" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
                 <li><a href="home.html" target="_self"><i class="material-icons">home</i></a></li>
-                <li><a href="historico.html"> <li><a href="historico.html"><i class="material-icons">manage_search</i></a></li></a></li>
+                <li><a href="historico.html"><i class="material-icons">manage_search</i></a></li>
                 <li><a href="sobre.html" target="_self">Sobre</a></li>
                 <li><a href="perfil.html"><i class="material-icons">account_circle</i></a></li>
                 <li><a href="login.html" id="logoutBtn"  target="_self" class="blue-grey lighten-4 red-text"><i class="material-icons">logout</i></a></li>
@@ -65,42 +101,34 @@
     <div class="container white center-align">
         <h2>Quem somos?</h2>
         <h5>O nosso projeto inovador voltado para a melhoria da mobilidade urbana e a resolução dos desafios enfrentados pelas cidades em relação à manutenção de infraestruturas urbanas.</h5>
+        <p>Nosso grupo, identificou uma lacuna crítica na gestão municipal: a falta de planejamento, organização e eficiência na manutenção de vias urbanas e rurais, rede elétrica, rede hidráulica e pavimentação das cidades. Além disso, fenômenos naturais frequentes geram transtornos adicionais, exacerbando ainda mais os desafios enfrentados pelas prefeituras e empresas privadas.</p>
+        <p>Para endereçar esses problemas de forma eficaz, desenvolvemos um <span class="highlight">aplicativo/site</span> que visa aprimorar a comunicação entre cidadãos e órgãos públicos, permitindo uma resposta rápida e eficiente aos transtornos causados pela falta de organização dos municípios.</p>
 
-<p>
-            Nosso grupo, identificou uma lacuna crítica na gestão municipal: a falta de planejamento, organização e eficiência na manutenção de vias urbanas e rurais, rede elétrica, rede hidráulica e pavimentação das cidades. Além disso, fenômenos naturais frequentes geram transtornos adicionais, exacerbando ainda mais os desafios enfrentados pelas prefeituras e empresas privadas.
+        <h3>Funcionalidades Principais do Aplicativo</h3>
+        <p><strong>Criação de Chamados Geolocalizados:</strong> Os usuários podem criar chamados em tempo real, reportando problemas específicos com precisão de localização, como buracos nas estradas, postes de luz quebrados, vazamentos de água, entre outros.</p>
+        <p><strong>Interatividade e Engajamento:</strong> Além de reportar problemas, os usuários podem interagir com outros chamados através de comentários e avaliações, promovendo uma participação ativa da comunidade na resolução dos problemas locais.</p>
+        <p><strong>Gestão Eficiente dos Chamados:</strong> Desenvolvemos uma plataforma de gestão que permite aos órgãos públicos e empresas responsáveis gerenciar os chamados recebidos, atribuindo-os às equipes de manutenção e acompanhando o status de resolução em tempo real.</p>
 
+        <h3>Impacto e Alinhamento com os ODS da ONU</h3>
+        <p>Nosso projeto visa contribuir diretamente para os Objetivos de Desenvolvimento Sustentável (ODS) da ONU, especialmente no que diz respeito à construção de cidades e comunidades sustentáveis (ODS 11). Acreditamos que ao melhorar a infraestrutura urbana e a mobilidade nas cidades, estamos promovendo um ambiente mais seguro, eficiente e inclusivo para todos os cidadãos.</p>
 
-            Para endereçar esses problemas de forma eficaz, desenvolvemos um aplicativo/site que visa aprimorar a comunicação entre cidadãos e órgãos públicos, permitindo uma resposta rápida e eficiente aos transtornos causados pela falta de organização dos municípios.</p>
-
-
-            <h3>Funcionalidades Principais do Aplicativo</h3>
-
-    <p>
-    <strong>Criação de Chamados Geolocalizados:</strong> Os usuários podem criar chamados em tempo real, reportando problemas específicos com precisão de localização, como buracos nas estradas, postes de luz quebrados, vazamentos de água, entre outros. <br>
-    <strong>Interatividade e Engajamento:</strong> Além de reportar problemas, os usuários podem interagir com outros chamados através de comentários e avaliações, promovendo uma participação ativa da comunidade na resolução dos problemas locais. <br>
-    <strong>Gestão Eficiente dos Chamados:</strong> Desenvolvemos uma plataforma de gestão que permite aos órgãos públicos e empresas responsáveis gerenciar os chamados recebidos, atribuindo-os às equipes de manutenção e acompanhando o status de resolução em tempo real.
-    </p>
-            <h3>Impacto e Alinhamento com os ODS da ONU</h3>
-
-    <p>Nosso projeto visa contribuir diretamente para os Objetivos de Desenvolvimento Sustentável (ODS) da ONU, especialmente no que diz respeito à construção de cidades e comunidades sustentáveis (ODS 11). Acreditamos que ao melhorar a infraestrutura urbana e a mobilidade nas cidades, estamos promovendo um ambiente mais seguro, eficiente e inclusivo para todos os cidadãos.</p>
-
- 
-<h3>Para saber mais sobre nosso projeto e explorar oportunidades de parceria, convidamos vocês a visitarem nossos perfis no LinkedIn:</h3>
-<h4>
-    <a href="https://shre.ink/ArturMoreira" target="_blank"> Artur Passos Moreira <i class="material-icons">link</i></a><br>
-    <a href="https://shre.ink/BernardoLionardo" target="_blank"> Bernardo Lionardo Costa  <i class="material-icons">link</i></a><br>
-    <a href=" https://shre.ink/PedroLara" target="_blank"> Pedro Henrique Ferreira Lara  <i class="material-icons">link</i></a><br>
-</h4>
-
-<h5>Estamos entusiasmados com a possibilidade de colaborar com sua empresa para transformar positivamente o ambiente urbano e melhorar a qualidade de vida de milhares de pessoas. Juntos, podemos criar cidades mais sustentáveis e resilientes para o futuro.</h5>
+        <h3>Para saber mais sobre nosso projeto e explorar oportunidades de parceria, convidamos vocês a visitarem nossos perfis no LinkedIn:</h3>
+        <div class="link-section">
+            <h4>
+                <a href="https://shre.ink/ArturMoreira" target="_blank">Artur Passos Moreira <i class="material-icons">link</i></a><br>
+                <a href="https://shre.ink/BernardoLionardo" target="_blank">Bernardo Lionardo Costa <i class="material-icons">link</i></a><br>
+                <a href="https://shre.ink/PedroLara" target="_blank">Pedro Henrique Ferreira Lara <i class="material-icons">link</i></a><br>
+            </h4>
+        </div>
+        <h5>Estamos entusiasmados com a possibilidade de colaborar com sua empresa para transformar positivamente o ambiente urbano e melhorar a qualidade de vida de milhares de pessoas. Juntos, podemos criar cidades mais sustentáveis e resilientes para o futuro.</h5>
     </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <script>
-          document.addEventListener('DOMContentLoaded', function() {
-              var elems = document.querySelectorAll('.sidenav');
-              var instances = M.Sidenav.init(elems);
-          });
-          </script>
-  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+    </script>
 </body>
 </html>

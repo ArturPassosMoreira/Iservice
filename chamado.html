@@ -7,14 +7,14 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .container {
-            padding: 10px;
-            margin-top: 10px;
+        body {
+            background-color: #f3f3f3;
+            font-family: 'Roboto', sans-serif;
         }
         nav {
-            background-color: red;
+            background-color: rgb(255, 0, 0);
         }
         nav ul a {
             color: white;
@@ -26,20 +26,41 @@
             height: 40px;
             width: auto;
             margin-top: 10px;
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
+        }
+        .container {
+            padding: 20px;
+            margin-top: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3em;
+            color: #ff0000;
+        }
+        h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2em;
+            color: #333;
+        }
+        .input-field label {
+            font-size: 1.2em;
+        }
+        .btn {
+            background-color: #ff0000;
         }
         .map-container {
             height: 600px;
             margin-top: 20px;
         }
-         .chamado>a{
-           width: 20vh;
+        .chamado a {
+            width: 20vh;
             margin: 15px;
             border-radius: 9px;
             box-shadow: 2px 2px 2px black;
         }
-       
-        
     </style>
 </head>
 <body class="red accent-2">
@@ -50,172 +71,149 @@
             <a href="home.html" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
                 <li><a href="home.html" target="_self"><i class="material-icons">home</i></a></li>
-                <li><a href="historico.html"> <li><a href="historico.html"><i class="material-icons">manage_search</i></a></li></a></li>
+                <li><a href="historico.html"><i class="material-icons">manage_search</i></a></li>
                 <li><a href="sobre.html" target="_self">Sobre</a></li>
                 <li><a href="perfil.html"><i class="material-icons">account_circle</i></a></li>
-                <li><a href="login.html" id="logoutBtn"  target="_self" class="blue-grey lighten-4 red-text"><i class="material-icons">logout</i></a></li>
+                <li><a href="login.html" id="logoutBtn" target="_self" class="blue-grey lighten-4 red-text"><i class="material-icons">logout</i></a></li>
             </ul>
         </div>
     </nav>
     <ul id="slide-out" class="sidenav">
-        <li><a href="home.html">Pagina Principal</a></li>
+        <li><a href="home.html">Página Principal</a></li>
         <li><a href="sobre.html" target="_self">Sobre</a></li>
-        <li><a href="historico.html">Historico de Chamados</a></li>
+        <li><a href="historico.html">Histórico de Chamados</a></li>
         <li><a href="perfil.html">Perfil Usuário</a></li>
-        <li><a href="login.html" id="logoutBtn"  target="_self" class="red-text">SAIR</a></li>
+        <li><a href="login.html" id="logoutBtn" target="_self" class="red-text">SAIR</a></li>
     </ul>
     <!-- Cabeçalho -->
     <div class="container white center-align">
         <h1>Criar Chamado</h1>
         <h3>Descrição</h3>
         <div class="input-field">
-          <select id="tipoProblema">
-              <option value="" disabled selected>Selecione o tipo do problema</option>
-              <option value="1">Pavimentação</option>
-              <option value="2">Rede Hidráulica</option>
-              <option value="3">Rede Elétrica</option>
-              <option value="4">Fenômeno da Natureza</option>
-              
-          </select>
-          <label for="tipoProblema">Tipo do Problema</label>
-      </div>
-      <div class="input-field">
-        <textarea id="descricaoProblema" class="materialize-textarea"></textarea>
-        <label for="descricaoProblema">Descrição do Problema</label>
-    </div>
-      <div class="file-field input-field">
-        <div class="btn grey">
-          <i class="material-icons"><span class="material-symbols-outlined">
-            add_photo_alternate
-            </i>
-
-            <input type="file" multiple>
+            <select id="tipoProblema">
+                <option value="" disabled selected>Selecione o tipo do problema</option>
+                <option value="1">Pavimentação</option>
+                <option value="2">Rede Hidráulica</option>
+                <option value="3">Rede Elétrica</option>
+                <option value="4">Fenômeno da Natureza</option>
+            </select>
+            <label for="tipoProblema">Tipo do Problema</label>
         </div>
-        <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" placeholder="Adicionar Imagem">
+        <div class="input-field">
+            <textarea id="descricaoProblema" class="materialize-textarea"></textarea>
+            <label for="descricaoProblema">Descrição do Problema</label>
         </div>
-    </div>
-
+        <div class="file-field input-field">
+            <div class="btn grey">
+                <i class="material-icons">add_photo_alternate</i>
+                <input type="file" multiple>
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Adicionar Imagem">
+            </div>
+        </div>
         <h3>Mapa de GPS em Tempo Real</h3>
         <div class="map-container" id="map"></div>
+        <div class="chamado center-align">
+            <a href="#" id="concluirChamadoBtn" class="green black-text btn">CONCLUIR</a>
+        </div>
     </div>
-    
-    <div class="chamado col s6 center-align ">
-      <a href="#" id="concluirChamadoBtn" class="green black-text btn">CONCLUIR</a>
-  </div>
-   
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-   
     <script>
         document.getElementById('logoutBtn').addEventListener('click', function(event) {
-        event.preventDefault(); // Evita que o link seja seguido diretamente
-        var confirmed = confirm("Tem certeza de que deseja sair?");
-
-        if (confirmed) {
-            window.location.href = "login.html"; // Redireciona para a página de login
-        } else {
-            // Ação cancelada
-        }
-    });
-        
-            var map;
-            var marker; 
-
-            function initMap() {
-                
-                if ("geolocation" in navigator) {
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        var latitude = position.coords.latitude;
-                        var longitude = position.coords.longitude;
-
-                        var mapOptions = {
-                            zoom: 15,
-                            center: { lat: latitude, lng: longitude },
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
-
-                        
-                        map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-                        
-                        var updateLocation = function() {
-                            navigator.geolocation.getCurrentPosition(function(position) {
-                                var latitude = position.coords.latitude;
-                                var longitude = position.coords.longitude;
-
-                                var userLatLng = new google.maps.LatLng(latitude, longitude);
-                                map.setCenter(userLatLng);
-
-                                if (marker) {
-                                    marker.setMap(null);
-                                }
-
-                                marker = new google.maps.Marker({
-                                    position: userLatLng,
-                                    map: map,
-                                    title: 'Sua localização'
-                                });
-                                localStorage.setItem("latitude", latitude);
-                                localStorage.setItem("longitude", longitude);
-                            });
-                        };
-
-                        
-                        setInterval(updateLocation, 5000);
-
-                        updateLocation();
-                    });
-                } else {
-                
-                    console.error("Seu navegador não suporta a API de Geolocalização.");
-                }
+            event.preventDefault();
+            var confirmed = confirm("Tem certeza de que deseja sair?");
+            if (confirmed) {
+                window.location.href = "login.html";
             }
-
-            initMap();
-            document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);
-            var elem = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elem);
-            
-            var concluirChamadoBtn = document.getElementById('concluirChamadoBtn');
-
-
-concluirChamadoBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    var descricaoProblema = document.getElementById("descricaoProblema").value.trim();
-    var tipoProblema = document.getElementById("tipoProblema").value;
-   
-    if (descricaoProblema === "") {
-        alert("Por favor, preencha a descrição do problema.");
-    } else {
-        localStorage.setItem("descricaoProblema", descricaoProblema);
-        localStorage.setItem("tipoProblema", tipoProblema);
-        var dataAtual = new Date();
-        var horaAtual = dataAtual.getHours();
-        var minutosAtual = dataAtual.getMinutes();
-        var segundosAtual = dataAtual.getSeconds();
-        var diaAtual = dataAtual.getDate();
-        var mesAtual = dataAtual.getMonth() + 1; 
-        var anoAtual = dataAtual.getFullYear();
-        var dataHoraAtual = diaAtual + '/' + mesAtual + '/' + anoAtual + ' ' + horaAtual + ':' + minutosAtual + ':' + segundosAtual;
-
-
-        localStorage.setItem("dataHoraConclusao", dataHoraAtual);
-        alert("Chamado concluído! Obrigado por Interagir! Você pode consultar seu chamado no seu historico de chamados. Você será redirecionado para pagina principal em instantes.");
-        
-            window.location.href = "home.html";
-        
-    }
-});
-        
         });
-        
+
+        var map;
+        var marker;
+
+        function initMap() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    var mapOptions = {
+                        zoom: 15,
+                        center: { lat: latitude, lng: longitude },
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+
+                    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+                    var updateLocation = function() {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            var latitude = position.coords.latitude;
+                            var longitude = position.coords.longitude;
+
+                            var userLatLng = new google.maps.LatLng(latitude, longitude);
+                            map.setCenter(userLatLng);
+
+                            if (marker) {
+                                marker.setMap(null);
+                            }
+
+                            marker = new google.maps.Marker({
+                                position: userLatLng,
+                                map: map,
+                                title: 'Sua localização'
+                            });
+                            localStorage.setItem("latitude", latitude);
+                            localStorage.setItem("longitude", longitude);
+                        });
+                    };
+
+                    setInterval(updateLocation, 5000);
+
+                    updateLocation();
+                });
+            } else {
+                console.error("Seu navegador não suporta a API de Geolocalização.");
+            }
+        }
+
+        initMap();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            M.Sidenav.init(elems);
+            var elem = document.querySelectorAll('select');
+            M.FormSelect.init(elem);
+
+            var concluirChamadoBtn = document.getElementById('concluirChamadoBtn');
+            concluirChamadoBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                var descricaoProblema = document.getElementById("descricaoProblema").value.trim();
+                var tipoProblema = document.getElementById("tipoProblema").value;
+
+                if (descricaoProblema === "") {
+                    alert("Por favor, preencha a descrição do problema.");
+                } else {
+                    localStorage.setItem("descricaoProblema", descricaoProblema);
+                    localStorage.setItem("tipoProblema", tipoProblema);
+                    var dataAtual = new Date();
+                    var horaAtual = dataAtual.getHours();
+                    var minutosAtual = dataAtual.getMinutes();
+                    var segundosAtual = dataAtual.getSeconds();
+                    var diaAtual = dataAtual.getDate();
+                    var mesAtual = dataAtual.getMonth() + 1;
+                    var anoAtual = dataAtual.getFullYear();
+                    var dataHoraAtual = diaAtual + '/' + mesAtual + '/' + anoAtual + ' ' + horaAtual + ':' + minutosAtual + ':' + segundosAtual;
+
+                    localStorage.setItem("dataHoraConclusao", dataHoraAtual);
+                    alert("Chamado concluído! Obrigado por Interagir! Você pode consultar seu chamado no seu histórico de chamados. Você será redirecionado para página principal em instantes.");
+                    window.location.href = "home.html";
+                }
+            });
+        });
     </script>
-    
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV2KukchL5pqIAnCoFtDXcRfZak6UGnKM&callback=initMap&libraries=maps,marker&v=beta"></script>
 </body>
 </html>

@@ -6,26 +6,12 @@
     <title>Perfil do Usuário</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-        .container {
-            margin-top: 30px;
-        }
-        .profile-card {
-            padding: 20px;
-            border-radius: 15px;
-            background-color: #ff0000;
-            color: #fff;
-            text-align: center;
-            box-shadow: 1px 1px 5px black;
-            font-family: "Bebas Neue", sans-serif;
-        }
-        .row {
-            margin-bottom: 20px;
-        }
-        .centered-button {
-            display: flex;
-            justify-content: center;
+        body {
+            background-color: #f3f3f3;
+            font-family: 'Roboto', sans-serif;
         }
         nav {
             background-color: red;
@@ -41,6 +27,46 @@
             width: auto;
             margin-top: 10px;
             margin-bottom: 10px;
+        }
+        .container {
+            padding: 20px;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .profile-card {
+            padding: 20px;
+            border-radius: 15px;
+            background-color: red;
+            color: #fff;
+            text-align: center;
+            box-shadow: 1px 1px 5px black;
+            font-family: "Bebas Neue", sans-serif;
+        }
+        .row {
+            margin-bottom: 20px;
+        }
+        .centered-button {
+            display: flex;
+            justify-content: center;
+        }
+        h3, h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+        }
+        a {
+            color: red;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .white-text {
+            color: white;
+        }
+        .black-text {
+            color: black;
         }
     </style>
 </head>
@@ -69,37 +95,34 @@
     </ul>
 
     <div class="container center-align">
-        <div class="row white">
+        <div class="row">
             <div class="col s12">
                 <div class="card-panel profile-card">
                     <h3>Perfil do Usuário</h3>
-                    
                 </div>
-                <p><strong>Nome:</strong> <span id="user-name"></span></p>
-                    <p><strong>E-mail:</strong> <span id="user-email"></span></p>
+                <p><strong>Nome:</strong> <span id="user-name" class="black-text"></span></p>
+                <p><strong>E-mail:</strong> <span id="user-email" class="black-text"></span></p>
 
-                    <h4>Alterar Senha</h4>
-                    <div class="row">
-                        <form class="col s12" id="password-form">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="new-password" type="password" class="validate" required>
-                                    <label for="new-password">Nova Senha</label>
-                                </div>
+                <h4 class="black-text">Alterar Senha</h4>
+                <div class="row">
+                    <form class="col s12" id="password-form">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="new-password" type="password" class="validate" required>
+                                <label for="new-password">Nova Senha</label>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="confirm-password" type="password" class="validate" required>
-                                    <label for="confirm-password">Confirmar Senha</label>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="confirm-password" type="password" class="validate" required>
+                                <label for="confirm-password">Confirmar Senha</label>
                             </div>
-                            <div class="centered-button">
-                                <button class="btn waves-effect waves-light blue" type="submit">Alterar Senha</button>
-                            </div>
-                        </form>
-                    </div>
-
-                  
+                        </div>
+                        <div class="centered-button">
+                            <button class="btn waves-effect waves-light blue" type="submit">Alterar Senha</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -132,7 +155,7 @@
 
                 user.senha = newPassword;
                 localStorage.setItem('loggedInUser', JSON.stringify(user));
-                
+
                 // Atualiza a senha do usuário na lista de usuários
                 var users = JSON.parse(localStorage.getItem('users')) || [];
                 var updatedUsers = users.map(function(u) {

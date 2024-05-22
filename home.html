@@ -7,15 +7,13 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-        
-        
-
-        .container {
-            padding: 10px;
-            margin-top: 10px;
+        body {
+            background-color: #f3f3f3;
+            font-family: 'Roboto', sans-serif;
         }
         nav {
             background-color: red;
@@ -32,19 +30,38 @@
             margin-top: 10px;
             margin-bottom: 10px; 
         }
+        .container {
+            padding: 20px;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
         .map-container {
-            height:600px;
+            height: 600px;
             margin-top: 20px;
         }
-         .chamado>a{
+        .chamado > a {
             margin: 15px;
             border-radius: 9px;
             box-shadow: 2px 2px 2px black;
         }
-        h3{
-            font-family: "Bebas Neue", sans-serif;
-            font-weight: 400;
-            font-style: normal;
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 0 5px;
+            border-radius: 3px;
+        }
+        a {
+            color: red;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -59,7 +76,7 @@
                 <li><a href="historico.html"><i class="material-icons">manage_search</i></a></li>
                 <li><a href="sobre.html" target="_self">Sobre</a></li>
                 <li><a href="perfil.html"><i class="material-icons">account_circle</i></a></li>
-                <li><a href="login.html" id="logoutBtn"  target="_self" class="blue-grey lighten-4 red-text"><i class="material-icons">logout</i></a></li>
+                <li><a href="login.html" id="logoutBtn" target="_self" class="blue-grey lighten-4 red-text"><i class="material-icons">logout</i></a></li>
             </ul>
         </div>
     </nav>
@@ -68,17 +85,16 @@
         <li><a href="sobre.html" target="_self">Sobre</a></li>
         <li><a href="historico.html">Historico de Chamados</a></li>
         <li><a href="perfil.html">Perfil Usuário</a></li>
-        <li><a href="login.html" id="logoutBtn"  target="_self" class="red-text">SAIR</a></li>
+        <li><a href="login.html" id="logoutBtn" target="_self" class="red-text">SAIR</a></li>
     </ul>
 
     <!-- Cabeçalho -->
-    <div class="container center-align ">
-        <h3 class=" white-text">iService</h3>
-
+    <div class="container center-align white">
+        <h3 class="black-text">iService</h3>
         <div class="map-container" id="map"></div>
     </div>
-    <div class="chamado col s12 center-align ">
-        <a href="chamado.html" target="_self" class=" green black-text btn" type="submit" name="action"> ABRIR CHAMADO</a>
+    <div class="chamado col s12 center-align">
+        <a href="chamado.html" target="_self" class="green black-text btn" type="submit" name="action"> ABRIR CHAMADO</a>
     </div>
 
     <!-- Compiled and minified JavaScript -->
@@ -87,74 +103,63 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);});
-            document.getElementById('logoutBtn').addEventListener('click', function(event) {
-        event.preventDefault(); // Evita que o link seja seguido diretamente
-        var confirmed = confirm("Tem certeza de que deseja sair?");
+            var instances = M.Sidenav.init(elems);
+        });
 
-        if (confirmed) {
-            window.location.href = "login.html"; // Redireciona para a página de login
-        } else {
-            // Ação cancelada
-        }
-    });
-        
-            var map;
-            var marker; 
-
-            function initMap() {
-              
-                if ("geolocation" in navigator) {
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        var latitude = position.coords.latitude;
-                        var longitude = position.coords.longitude;
-
-                        var mapOptions = {
-                            zoom: 15,
-                            center: { lat: latitude, lng: longitude },
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
-
-                        
-                        map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-                        
-                        var updateLocation = function() {
-                            navigator.geolocation.getCurrentPosition(function(position) {
-                                var latitude = position.coords.latitude;
-                                var longitude = position.coords.longitude;
-
-                                var userLatLng = new google.maps.LatLng(latitude, longitude);
-                                map.setCenter(userLatLng);
-
-                                if (marker) {
-                                    marker.setMap(null);
-                                }
-
-                                
-                                marker = new google.maps.Marker({
-                                    position: userLatLng,
-                                    map: map,
-                                    title: 'Sua localização'
-                                });
-                            });
-                        };
-
-                        
-                        setInterval(updateLocation, 5000);
-
-                       
-                        updateLocation();
-                    });
-                } else {
-                  
-                    console.error("Seu navegador não suporta a API de Geolocalização.");
-                }
+        document.getElementById('logoutBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita que o link seja seguido diretamente
+            var confirmed = confirm("Tem certeza de que deseja sair?");
+            if (confirmed) {
+                window.location.href = "login.html"; // Redireciona para a página de login
             }
+        });
 
-           
-            initMap();
-        
+        var map;
+        var marker; 
+
+        function initMap() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    var mapOptions = {
+                        zoom: 15,
+                        center: { lat: latitude, lng: longitude },
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+
+                    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+                    var updateLocation = function() {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            var latitude = position.coords.latitude;
+                            var longitude = position.coords.longitude;
+
+                            var userLatLng = new google.maps.LatLng(latitude, longitude);
+                            map.setCenter(userLatLng);
+
+                            if (marker) {
+                                marker.setMap(null);
+                            }
+
+                            marker = new google.maps.Marker({
+                                position: userLatLng,
+                                map: map,
+                                title: 'Sua localização'
+                            });
+                        });
+                    };
+
+                    setInterval(updateLocation, 5000);
+                    updateLocation();
+                });
+            } else {
+                console.error("Seu navegador não suporta a API de Geolocalização.");
+            }
+        }
+
+        initMap();
     </script>
     
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV2KukchL5pqIAnCoFtDXcRfZak6UGnKM&callback=initMap&libraries=maps,marker&v=beta"></script>

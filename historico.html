@@ -7,14 +7,15 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .container {
-            padding: 10px;
-            margin-top: 10px;
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        body {
+            background-color: #f3f3f3;
+            font-family: 'Roboto', sans-serif;
         }
         nav {
-            background-color: red;
+            background-color: rgb(255, 0, 0);
         }
         nav ul a {
             color: white;
@@ -26,14 +27,41 @@
             height: 40px;
             width: auto;
             margin-top: 10px;
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
         }
-     
+        .container {
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3em;
+            color: #ff0000;
+        }
+        .btn {
+            background-color: #ff0000;
+        }
         .chamado {
             margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #fff;
             border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .chamado h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: #333;
+        }
+        .chamado p {
+            font-size: 1em;
+            margin-bottom: 10px;
         }
         .chamado img {
             max-width: 100%;
@@ -50,28 +78,28 @@
             <a href="home.html" class="brand-logo"><img src="imagens/logo.png" alt="Logo"></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down z-depth-5 red darken-4">
                 <li><a href="home.html" target="_self"><i class="material-icons">home</i></a></li>
-                <li><a href="historico.html"> <li><a href="historico.html"><i class="material-icons">manage_search</i></a></li></a></li>
+                <li><a href="historico.html" target="_self"><i class="material-icons">manage_search</i></a></li>
                 <li><a href="sobre.html" target="_self">Sobre</a></li>
                 <li><a href="perfil.html"><i class="material-icons">account_circle</i></a></li>
-                <li><a href="login.html" id="logoutBtn"  target="_self" class="blue-grey lighten-4 red-text"><i class="material-icons">logout</i></a></li>
+                <li><a href="login.html" id="logoutBtn" target="_self" class="blue-grey lighten-4 red-text"><i class="material-icons">logout</i></a></li>
             </ul>
         </div>
     </nav>
     <ul id="slide-out" class="sidenav">
-        <li><a href="home.html">Pagina Principal</a></li>
+        <li><a href="home.html">Página Principal</a></li>
         <li><a href="sobre.html" target="_self">Sobre</a></li>
-        <li><a href="historico.html">Historico de Chamados</a></li>
+        <li><a href="historico.html">Histórico de Chamados</a></li>
         <li><a href="perfil.html">Perfil Usuário</a></li>
-        <li><a href="login.html" id="logoutBtn"  target="_self" class="red-text">SAIR</a></li>
+        <li><a href="login.html" id="logoutBtn" target="_self" class="red-text">SAIR</a></li>
     </ul>
 
     <!-- Cabeçalho -->
     <div class="container white center-align">
-        <h1>Histórico de Chamados</h1>
-        <button class="btn red accent-4 black-text z-depth-5" id="apagarHistoricoBtn">Apagar Histórico</button>
-       <div class="grey lighten-1 z-depth-5" id="historicoChamados"></div>
-       
-       
+        <div class="header">
+            <h1>Histórico de Chamados</h1>
+            <button class="btn red accent-4 black-text z-depth-5" id="apagarHistoricoBtn">Apagar Histórico</button>
+        </div>
+        <div class="grey lighten-1 z-depth-5" id="historicoChamados"></div>
     </div>
 
     <!-- Compiled and minified JavaScript -->
@@ -89,32 +117,26 @@
             var dataHoraConclusao = localStorage.getItem("dataHoraConclusao");
             var latitude = localStorage.getItem("latitude");
             var longitude = localStorage.getItem("longitude");
+
             document.getElementById('logoutBtn').addEventListener('click', function(event) {
-        event.preventDefault(); // Evita que o link seja seguido diretamente
-        var confirmed = confirm("Tem certeza de que deseja sair?");
-
-        if (confirmed) {
-            window.location.href = "login.html"; // Redireciona para a página de login
-        } else {
-            // Ação cancelada
-        }
-    });
-
+                event.preventDefault();
+                var confirmed = confirm("Tem certeza de que deseja sair?");
+                if (confirmed) {
+                    window.location.href = "login.html";
+                }
+            });
 
             if (descricaoProblema && tipoProblema) {
                 var ultimoChamado = chamados.length > 0 ? chamados[chamados.length - 1] : null;
                 var novoChamado = { descricao: descricaoProblema, tipo: tipoProblema, dataHoraConclusao: dataHoraConclusao, latitude: latitude, longitude: longitude };
                 if (!ultimoChamado || !saoIguais(ultimoChamado, novoChamado)) {
-                   
                     chamados.push(novoChamado);
                 }
             }
 
-         
             localStorage.setItem("chamados", JSON.stringify(chamados));
-
-           
             exibirChamados(chamados);
+
             var apagarHistoricoBtn = document.getElementById("apagarHistoricoBtn");
             apagarHistoricoBtn.addEventListener('click', function() {
                 var confirmacao = confirm("Tem certeza que deseja apagar todo o histórico de chamados?");
@@ -123,16 +145,15 @@
                     document.getElementById("historicoChamados").innerHTML = "<p>Histórico de chamados apagado com sucesso.</p>";
                 }
             });
+
             if (chamados.length > 0) {
                 var ultimoChamado = chamados[chamados.length - 1];
                 if (ultimoChamado.latitude && ultimoChamado.longitude) {
                     exibirLocalizacaoNoMapa(ultimoChamado.latitude, ultimoChamado.longitude);
                 }
             }
-        
         });
 
-        
         function saoIguais(chamado1, chamado2) {
             return chamado1.descricao === chamado2.descricao && chamado1.tipo === chamado2.tipo;
         }
@@ -155,8 +176,8 @@
                             tipoNome = 'Rede Elétrica';
                             break;
                         case '4':
-                            tipoNome= 'Fenômeno da Natureza';
-                            break;    
+                            tipoNome = 'Fenômeno da Natureza';
+                            break;
                         default:
                             tipoNome = 'Não Informado';
                     }
@@ -168,8 +189,7 @@
                         <p>Tipo: ${tipoNome}</p>
                         <p>Descrição: ${chamado.descricao}</p>
                         <p>Data e Hora de Conclusão: ${chamado.dataHoraConclusao}</p>
-                        <p>Latitude: ${chamado.latitude} /Longitude:  ${chamado.longitude}</p>
-                        
+                        <p>Latitude: ${chamado.latitude} / Longitude: ${chamado.longitude}</p>
                     `;
                     historicoChamados.appendChild(chamadoDiv);
                 });
@@ -177,8 +197,6 @@
                 historicoChamados.innerHTML = "<p>Nenhum chamado encontrado no histórico.</p>";
             }
         }
-        
     </script>
-    
 </body>
 </html>
